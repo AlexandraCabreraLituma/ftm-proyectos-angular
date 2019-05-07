@@ -9,6 +9,8 @@ import { FooterComponent } from './footer/footer.component';
 import {HttpClientModule} from '@angular/common/http';
 import {Routes} from '@angular/router';
 import { PublicationComponent } from './publication/publication.component';
+import {HttpApiOrcidService} from './shared/service/http-api-orcid.service';
+import {PublicationService} from './publication/publication.service';
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { PublicationComponent } from './publication/publication.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [HttpApiOrcidService,
+              PublicationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

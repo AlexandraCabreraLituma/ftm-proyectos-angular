@@ -1,4 +1,11 @@
-<p>
-  publication works!
+<div>
+  <p *ngFor="let i of reservaList">
+    <span> </span>
+    <span> title: {{i.title}}</span>
+    <span> tipo: {{i.tipo}}</span>
+    <span>publicationDate: {{i.publicationDate}}</span>
+    <span>url :{{i.url}}</span>
+    <span>journalTitle: {{i.journalTitle}}</span>
+  </p>
 
-</p>
+</div>
