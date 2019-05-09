@@ -16,12 +16,16 @@ interface ObjRespone {
 export class PublicationService {
 
   constructor(private httpService: HttpApiOrcidService) { }
-
+/*
   readAll(corid): Observable<any> {
+
     return this.httpService.get<ObjRespone>(corid, ApiEndpoint.WORKS).pipe(
-      map( x => x.group)
+      map( x => {
+        return x.group;
+      })
     );
-  }
+  }*/
+
 
 }
 

@@ -12,7 +12,7 @@ export class PublicationComponent implements OnInit {
   paper: PublicationModel = {title: null, tipo: null, publicationDate : null, url : null, journalTitle : null };
   reservaList: PublicationModel[] = [];
 
-  constructor(private publicationService: PublicationService) {
+  constructor(private publicationService: PublicationService) {/*
     this.publicationService.readAll('0000-0002-3650-2964').subscribe(
       (res) => {
         console.log(res);
@@ -21,7 +21,7 @@ export class PublicationComponent implements OnInit {
       (error) => {
         console.log(error);
       }
-    );
+    );*/
   }
   clean(res: any) {
     for (let i = 0; i < res.length; i++) {
