@@ -14,16 +14,7 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <label  class="cols-sm-2 control-label">Email</label>
-    <div class="input-container">
-      <i class="fa fa-envelope icon"></i>
-      <input class="input-field" type="text" placeholder="Email" formControlName="vemail" [(ngModel)] = "email" [ngClass]="{ 'is-invalid': submitted && f.vemail.errors }"   >
-    </div>
-    <div *ngIf="submitted && f.vemail.errors" class="form-horizontal alert alert-danger fade in">
-      <div *ngIf="f.vemail.errors.required">Email es obligatorio</div>
-    </div>
-  </div>
+
 
   <div class="form-group">
     <label class="cols-sm-2 control-label">Contraseña</label>
@@ -48,11 +39,68 @@
       <strong >ATENCI&Oacute;N:</strong>Constraseñas no coinciden
     </div>
   </div>
-  <label  class="cols-sm-2 control-label">Fecha de nacimiento</label>
-  <div class="input-container">
-    <i class="fa fa-calendar icon"></i>
-    <input class="input-field" type="date" placeholder="Fecha Nacimiento" formControlName="vfecha" [(ngModel)] = "fecha" >
+  <div class="form-group">
+    <label  class="cols-sm-2 control-label">Email</label>
+    <div class="input-container">
+      <i class="fa fa-envelope icon"></i>
+      <input class="input-field" type="text" placeholder="Email" formControlName="vemail" [(ngModel)] = "email" [ngClass]="{ 'is-invalid': submitted && f.vemail.errors }"   >
+    </div>
+    <div *ngIf="submitted && f.vemail.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vemail.errors.required">Email es obligatorio</div>
+    </div>
   </div>
+  <div class="form-group">
+    <label  class="cols-sm-2 control-label">ORCID</label>
+    <div class="input-container">
+      <i class="fa fa-envelope icon"></i>
+      <input class="input-field" type="text" placeholder="Orcid" formControlName="vorcid" [(ngModel)] = "orcid" [ngClass]="{ 'is-invalid': submitted && f.vorcid.errors }"   >
+    </div>
+    <div *ngIf="submitted && f.vorcid.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vorcid.errors.required">Orcid es obligatorio</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label  class="cols-sm-2 control-label">First Name</label>
+    <div class="input-container">
+      <i class="fa fa-envelope icon"></i>
+      <input class="input-field" type="text" placeholder="First Name" formControlName="vfirstname" [(ngModel)] = "firstname" [ngClass]="{ 'is-invalid': submitted && f.vfirstname.errors }"   >
+    </div>
+    <div *ngIf="submitted && f.vfirstname.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vfirstname.errors.required">Firstname es obligatorio</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label  class="cols-sm-2 control-label">Last Name</label>
+    <div class="input-container">
+      <i class="fa fa-envelope icon"></i>
+      <input class="input-field" type="text" placeholder="Last Name" formControlName="vlastname" [(ngModel)] = "lastname" [ngClass]="{ 'is-invalid': submitted && f.vlastname.errors }"   >
+    </div>
+    <div *ngIf="submitted && f.vlastname.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vlastname.errors.required">Firstname es obligatorio</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label  class="cols-sm-2 control-label">Phone</label>
+    <div class="input-container">
+      <i class="fa fa-envelope icon"></i>
+      <input class="input-field" type="text" placeholder="phone" formControlName="vphone" [(ngModel)] = "phone" [ngClass]="{ 'is-invalid': submitted && f.vphone.errors }"   >
+    </div>
+    <div *ngIf="submitted && f.vphone.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vphone.errors.required">Phone es obligatorio</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label  class="cols-sm-2 control-label">Address</label>
+    <div class="input-container">
+      <i class="fa fa-envelope icon"></i>
+      <input class="input-field" type="text" placeholder="address" formControlName="vaddress" [(ngModel)] = "address" [ngClass]="{ 'is-invalid': submitted && f.vaddress.errors }"   >
+    </div>
+    <div *ngIf="submitted && f.vaddress.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vaddress.errors.required">Addres es obligatorio</div>
+    </div>
+  </div>
+
+
 
   <div class="form-group">
     <button id="btnRegistro" class="btn btn-primary">Register</button>

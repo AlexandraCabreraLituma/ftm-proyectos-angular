@@ -16,13 +16,9 @@ export class UserComponent implements OnInit {
   private username: string;
   private email: string;
   private password: string;
-  private fecha: string;
-  private timestamp: number;
-  private isregistro = false;
-  private isformulario = true;
   private advertenciaContresena = false;
   private reppassword: string;
-  private newUser = {username: '', email: '', password: '', birthdate: null};
+  private newUser = {username: '', password: '', email: '', orcid: '', firstname: '', lastname : '', phone: 0, address: ''};
   private isVerificacionRegistro = false;
   private mensajeVerificacion: '';
 
@@ -56,7 +52,11 @@ export class UserComponent implements OnInit {
       vemail: ['', [Validators.required]],
       vpassword: ['', [Validators.required]],
       vreppassword: ['', [Validators.required]],
-      vfecha: [''],
+      vorcid: ['', [Validators.required]],
+      vfirstname: ['', [Validators.required]],
+      vlastname: ['', [Validators.required]],
+      vphone: ['', [Validators.required]],
+      vaddress: ['', [Validators.required]],
     });
   }
 
