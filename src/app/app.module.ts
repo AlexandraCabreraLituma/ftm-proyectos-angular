@@ -11,6 +11,9 @@ import {Routes} from '@angular/router';
 import { PublicationComponent } from './publication/publication.component';
 import {HttpApiOrcidService} from './shared/service/http-api-orcid.service';
 import {PublicationService} from './publication/publication.service';
+import { UserComponent } from './user/user.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -19,12 +22,16 @@ import {PublicationService} from './publication/publication.service';
     HomeComponent,
     MenuComponent,
     FooterComponent,
-    PublicationComponent
+    PublicationComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [HttpApiOrcidService,
               PublicationService],

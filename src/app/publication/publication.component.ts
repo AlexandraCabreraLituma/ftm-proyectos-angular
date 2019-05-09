@@ -16,7 +16,8 @@ export class PublicationComponent implements OnInit {
     this.publicationService.readAll('0000-0002-3650-2964').subscribe(
       (res) => {
         console.log(res);
-        this.clean(res);
+        this.reservaList = res;
+        // this.clean(res);
       },
       (error) => {
         console.log(error);

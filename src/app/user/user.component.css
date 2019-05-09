@@ -1,0 +1,56 @@
+
+.input-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.icon {
+  padding: 10px;
+  background: steelblue;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
+
+.input-field:focus {
+  border: 2px solid dodgerblue;
+}
+#advertenciaPasword{
+  text-align: center;
+}
+#registroExisto{
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+}
+
+#btnRegistro {
+  background-color:steelblue;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+#btnRegistro:hover {
+  opacity: 1;
+}
+#registroUsuario{
+  max-width:30%;
+  margin:auto;
+}
+
+#dialogAdvertencia{
+  text-align:center;
+
+}

@@ -1,0 +1,115 @@
+<form id="registroUsuario" [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
+  <h2>Registro Usuario</h2>
+  <div class="form-group">
+    <label  class="cols-sm-2 control-label">Usuario</label>
+    <div class="input-container">
+      <i class="fa fa-user icon"></i>
+      <input type="text" formControlName="vuserName" [(ngModel)] = "username"  (blur)="showUserName()" (focus)="closeAdvertencia()"  placeholder="Identificación de Usuario"  class="input-field" [ngClass]="{ 'is-invalid': submitted && f.vuserName.errors }" />
+    </div>
+    <div *ngIf="submitted && f.vuserName.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vuserName.errors.required">Usario is obligatorio</div>
+    </div>
+    <div *ngIf="advertenciaUsuario" id="dialogAdvertencia"class="form-horizontal alert alert-danger fade in" >
+      <strong >ATENCI&Oacute;N:</strong>{{msgadvertenciaUsuario}}
+    </div>
+  </div>
+
+
+
+  <div class="form-group">
+    <label class="cols-sm-2 control-label">Contraseña</label>
+    <div class="input-container">
+      <i class="fa fa-key icon"></i>
+      <input class="input-field" type="password" placeholder="Contraseña"   formControlName="vpassword"  [(ngModel)] = "password" (focus)="closeAdvertenciaPasword()" [ngClass]="{ 'is-invalid': submitted && f.vpassword.errors }" >
+    </div>
+    <div *ngIf="submitted && f.vpassword.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vpassword.errors.required">Contraseña es obligatoria</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label  class="cols-sm-2 control-label">Repetir Contraseña</label>
+    <div class="input-container">
+      <i class="fa fa-key icon"></i>
+      <input class="input-field" type="password" placeholder="RepetirContraseña" formControlName="vreppassword" [(ngModel)] = "reppassword" (blur)="comparatePassword()"  (focus)="closeAdvertenciaPasword()"[ngClass]="{ 'is-invalid': submitted && f.vreppassword.errors}">
+    </div>
+    <div *ngIf="submitted && f.vreppassword.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vreppassword.errors.required">Contraseña es obligatoria</div>
+    </div>
+    <div *ngIf="advertenciaContresena" id="advertenciaPasword"class="form-horizontal alert alert-danger fade in" >
+      <strong >ATENCI&Oacute;N:</strong>Constraseñas no coinciden
+    </div>
+  </div>
+  <div class="form-group">
+    <label  class="cols-sm-2 control-label">Email</label>
+    <div class="input-container">
+      <i class="fa fa-envelope icon"></i>
+      <input class="input-field" type="text" placeholder="Email" formControlName="vemail" [(ngModel)] = "email" [ngClass]="{ 'is-invalid': submitted && f.vemail.errors }"   >
+    </div>
+    <div *ngIf="submitted && f.vemail.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vemail.errors.required">Email es obligatorio</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label  class="cols-sm-2 control-label">ORCID</label>
+    <div class="input-container">
+      <i class="fa fa-envelope icon"></i>
+      <input class="input-field" type="text" placeholder="Orcid" formControlName="vorcid" [(ngModel)] = "orcid" [ngClass]="{ 'is-invalid': submitted && f.vorcid.errors }"   >
+    </div>
+    <div *ngIf="submitted && f.vorcid.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vorcid.errors.required">Orcid es obligatorio</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label  class="cols-sm-2 control-label">First Name</label>
+    <div class="input-container">
+      <i class="fa fa-envelope icon"></i>
+      <input class="input-field" type="text" placeholder="First Name" formControlName="vfirstname" [(ngModel)] = "firstname" [ngClass]="{ 'is-invalid': submitted && f.vfirstname.errors }"   >
+    </div>
+    <div *ngIf="submitted && f.vfirstname.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vfirstname.errors.required">Firstname es obligatorio</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label  class="cols-sm-2 control-label">Last Name</label>
+    <div class="input-container">
+      <i class="fa fa-envelope icon"></i>
+      <input class="input-field" type="text" placeholder="Last Name" formControlName="vlastname" [(ngModel)] = "lastname" [ngClass]="{ 'is-invalid': submitted && f.vlastname.errors }"   >
+    </div>
+    <div *ngIf="submitted && f.vlastname.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vlastname.errors.required">Firstname es obligatorio</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label  class="cols-sm-2 control-label">Phone</label>
+    <div class="input-container">
+      <i class="fa fa-envelope icon"></i>
+      <input class="input-field" type="text" placeholder="phone" formControlName="vphone" [(ngModel)] = "phone" [ngClass]="{ 'is-invalid': submitted && f.vphone.errors }"   >
+    </div>
+    <div *ngIf="submitted && f.vphone.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vphone.errors.required">Phone es obligatorio</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label  class="cols-sm-2 control-label">Address</label>
+    <div class="input-container">
+      <i class="fa fa-envelope icon"></i>
+      <input class="input-field" type="text" placeholder="address" formControlName="vaddress" [(ngModel)] = "address" [ngClass]="{ 'is-invalid': submitted && f.vaddress.errors }"   >
+    </div>
+    <div *ngIf="submitted && f.vaddress.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vaddress.errors.required">Addres es obligatorio</div>
+    </div>
+  </div>
+
+
+
+  <div class="form-group">
+    <button id="btnRegistro" class="btn btn-primary">Register</button>
+  </div>
+
+
+</form>
+
+<br>
+<br>
+<br>
+<br>
