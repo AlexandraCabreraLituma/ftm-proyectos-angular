@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import {el} from '@angular/platform-browser/testing/src/browser_util';
+import {User} from './user';
+import {UserService} from '../shared/service/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -16,14 +19,22 @@ export class UserComponent implements OnInit {
   private username: string;
   private email: string;
   private password: string;
+  private orcid: string;
+  private firstname: string;
+  private lastname: string;
+  private phone: number;
+  private address: string;
+  
+
   private advertenciaContresena = false;
   private reppassword: string;
-  private newUser = {username: '', password: '', email: '', orcid: '', firstname: '', lastname : '', phone: 0, address: ''};
+  user: User;
   private isVerificacionRegistro = false;
   private mensajeVerificacion: '';
+  //homeUrl: string;
 
-
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
+  //  this.homeUrl = data.homeUrl;
   }
 
   comparatePassword() {
@@ -71,12 +82,21 @@ export class UserComponent implements OnInit {
       console.log("datos invalidos");
       return;
     } else {
+      this.add();
       console.log("datos validos");
 
     }
 
   }
 
+  add() {
+    this.user = {username: this.username, password: this.password, email: this.email, orcid: this.orcid, firstname: this.firstname, lastname : this.lastname, phone: this.phone, address: this.address};
+    this.userService.saveUser(this.user).subscribe(response => {
+      console.log('regsitro Correcto');
+    }, error => {
+      console.log('ERROR:', error);
+    });
+  }
 
 
 

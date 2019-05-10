@@ -14,7 +14,8 @@ import {PublicationService} from './publication/publication.service';
 import { UserComponent } from './user/user.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import {UserService} from './shared/service/user.service';
+import {HttpService} from './shared/service/http.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     BrowserAnimationsModule
   ],
   providers: [HttpApiOrcidService,
-              PublicationService],
+              PublicationService,
+              UserService,
+              HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
