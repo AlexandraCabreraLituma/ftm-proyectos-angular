@@ -24,16 +24,13 @@ export class UserComponent implements OnInit {
   private lastname: string;
   private phone: number;
   private address: string;
-  
-
   private advertenciaContresena = false;
   private reppassword: string;
   user: User;
-  private isVerificacionRegistro = false;
-  private mensajeVerificacion: '';
-  //homeUrl: string;
-
+  private isregistro = false;
+  private isformulario = true;
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
+
   //  this.homeUrl = data.homeUrl;
   }
 
@@ -60,13 +57,13 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       vuserName: ['', [Validators.required]],
-      vemail: ['', [Validators.required]],
+      vemail: ['', [Validators.required, Validators.email]],
       vpassword: ['', [Validators.required]],
       vreppassword: ['', [Validators.required]],
       vorcid: ['', [Validators.required]],
       vfirstname: ['', [Validators.required]],
       vlastname: ['', [Validators.required]],
-      vphone: ['', [Validators.required]],
+      vphone: ['', [Validators.required, Validators.pattern('[0-9]{9}')]],
       vaddress: ['', [Validators.required]],
     });
   }
@@ -93,7 +90,11 @@ export class UserComponent implements OnInit {
     this.user = {username: this.username, password: this.password, email: this.email, orcid: this.orcid, firstname: this.firstname, lastname : this.lastname, phone: this.phone, address: this.address};
     this.userService.saveUser(this.user).subscribe(response => {
       console.log('regsitro Correcto');
+      this.isregistro = true;
+      this.isformulario = false;
     }, error => {
+      this.isregistro = false;
+      this.isformulario = true;
       console.log('ERROR:', error);
     });
   }
