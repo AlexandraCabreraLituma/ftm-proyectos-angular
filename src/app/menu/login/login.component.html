@@ -1,0 +1,33 @@
+<div id="myModal" class="modal" role="dialog">
+
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Registro de Usuarios</h4>
+    </div>
+
+    <form id="formularioLog" class="form-horizontal" role="form" >
+
+      <div class="form-group" >
+        <label  class="col-md-5 control-label">UserName:</label>
+        <div class='col-md-5' style="top:5px;">
+          <input type="text" class="form-control" #theuser (focus)="closeAdvertencia()" >
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-5 control-label">Password:</label>
+        <div class='col-md-5'>
+          <input type="password" class="form-control" #thepassword >
+        </div>
+      </div>
+
+      <div *ngIf="advertencia" id="dialogAdvertencia"class="form-horizontal alert alert-danger fade in" >
+        <strong >ATENCI&Oacute;N:</strong>{{advertenciaMensaje}}
+      </div>
+      <div class="modal-footer">
+        <input  id="botonLogin" type="button" class="btn btn-default" value="Enviar"  (click)="showUser(theuser.value,thepassword.value)">
+        <input  id="botonCerrarLogin" type="button" class="btn btn-default" value="Close"  (click) = "closeModal()">
+      </div>
+    </form>
+  </div>
+</div>
+

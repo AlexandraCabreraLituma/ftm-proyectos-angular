@@ -36,6 +36,16 @@ export class HttpService {
     );
   }
 
+  login(endPoint: string, user: Object): Observable<any> {
+    return this.http.post(HttpService.API_END_POINT + endPoint, user, this.createOptions()).pipe(
+      map(response => this.extractData(response, user)
+      ), catchError(error => {
+        return this.handleError(error);
+      })
+    );
+  }
+
+
   private extractData(response, user?): any {
     console.log("extractData");
     if (this.correctNotification) {
