@@ -16,6 +16,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {UserService} from './shared/service/user.service';
 import {HttpService} from './shared/service/http.service';
+import {LoginComponent} from './menu/login/login.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {HttpService} from './shared/service/http.service';
     MenuComponent,
     FooterComponent,
     PublicationComponent,
-    UserComponent
+    UserComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
