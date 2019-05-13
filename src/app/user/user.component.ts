@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import {el} from '@angular/platform-browser/testing/src/browser_util';
 import {User} from './user';
 import {UserService} from '../shared/service/user.service';
 import {Router} from '@angular/router';
@@ -12,8 +11,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  private advertenciaUsuario = false;
-  private msgadvertenciaUsuario = '';
+  private advertencia = false;
+  private msgadvertencia = '';
   private registerForm: FormGroup;
   private submitted = false;
   private username: string;
@@ -35,7 +34,7 @@ export class UserComponent implements OnInit {
   }
 
   comparatePassword() {
-    if (this.password != this.reppassword) {
+    if (this.password !== this.reppassword) {
       this.advertenciaContresena = true;
 
     }
@@ -46,12 +45,65 @@ export class UserComponent implements OnInit {
   }
 
   closeAdvertencia() {
-    this.advertenciaUsuario = false;
+    this.advertencia = false;
   }
 
   showUserName() {
     console.log(this.username);
+    this.userService.getUserName(this.username).subscribe(
+      (respuesta) => {
+        this.msgadvertencia = 'Usuario ya existe';
+        this.advertencia = true;
+      },
+      (error) => {
+        console.log(error);
+        if (error.status === 404){
+          this.advertencia = false;
+        } else if (error.status === 500) {
+          this.msgadvertencia = 'Internal server error';
+          this.advertencia = true;
+        }
 
+      }
+    );
+  }
+
+  showEmail() {
+    this.userService.getEmail(this.email).subscribe(
+      (respuesta) => {
+        this.msgadvertencia = 'Email ya existe';
+        this.advertencia = true;
+      },
+      (error) => {
+        console.log(error);
+        if (error.status === 404) {
+          this.advertencia = false;
+        } else if (error.status === 500) {
+          this.msgadvertencia = 'Internal server error';
+          this.advertencia = true;
+        }
+
+      }
+    );
+  }
+  showOrcid() {
+    console.log(this.email);
+    this.userService.getOrcid(this.orcid).subscribe(
+      (respuesta) => {
+        this.msgadvertencia = 'ORCID ya existe';
+        this.advertencia = true;
+      },
+      (error) => {
+        console.log(error);
+        if (error.status === 404){
+          this.advertencia = false;
+        } else if (error.status === 500) {
+          this.msgadvertencia = 'Internal server error';
+          this.advertencia = true;
+        }
+
+      }
+    );
   }
 
   ngOnInit() {
@@ -79,9 +131,10 @@ export class UserComponent implements OnInit {
       console.log("datos invalidos");
       return;
     } else {
-      this.add();
+      if (this.advertencia=== false){
+        this.add();
+      }
       console.log("datos validos");
-
     }
 
   }

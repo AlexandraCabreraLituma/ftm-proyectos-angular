@@ -3,4 +3,6 @@ export class ApiEndpoint {
   public static WORKS = '/works';
   public static LOGIN = '/login';
   public static USERS = '/users';
+  public static EMAIL = '/email';
+  public static ORCID = '/orcid';
 }
