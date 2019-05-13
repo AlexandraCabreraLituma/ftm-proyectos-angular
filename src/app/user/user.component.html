@@ -1,5 +1,8 @@
 <form id="registroUsuario" [formGroup]="registerForm" (ngSubmit)="onSubmit()" *ngIf="isformulario" >
   <h2>Registro Usuario</h2>
+  <div *ngIf="advertencia" id="dialogAdvertencia"class="form-horizontal alert alert-danger fade in" >
+    <strong >ATENCI&Oacute;N:</strong>{{msgadvertencia}}
+  </div>
   <div class="form-group">
     <label  class="cols-sm-2 control-label">Usuario</label>
     <div class="input-container">
@@ -9,11 +12,7 @@
     <div *ngIf="submitted && f.vuserName.errors" class="form-horizontal alert alert-danger fade in">
       <div *ngIf="f.vuserName.errors.required">Usario is obligatorio</div>
     </div>
-    <div *ngIf="advertenciaUsuario" id="dialogAdvertencia"class="form-horizontal alert alert-danger fade in" >
-      <strong >ATENCI&Oacute;N:</strong>{{msgadvertenciaUsuario}}
-    </div>
   </div>
-
   <div class="form-group">
     <label class="cols-sm-2 control-label">Contraseña</label>
     <div class="input-container">
@@ -41,18 +40,19 @@
     <label  class="cols-sm-2 control-label">Email</label>
     <div class="input-container">
       <i class="fa fa-envelope icon"></i>
-      <input class="input-field" type="text" placeholder="Email" formControlName="vemail" [(ngModel)] = "email" [ngClass]="{ 'is-invalid': submitted && f.vemail.errors }"   >
+      <input class="input-field" type="text" placeholder="Email" formControlName="vemail" (blur)="showEmail()" (focus)="closeAdvertencia()" [(ngModel)] = "email" [ngClass]="{ 'is-invalid': submitted && f.vemail.errors }"   >
     </div>
     <div *ngIf="submitted && f.vemail.errors" class="form-horizontal alert alert-danger fade in">
       <div *ngIf="f.vemail.errors.required">Email es obligatorio</div>
       <div *ngIf="f.vemail.errors.email">Email debe ser una dirección valida</div>
     </div>
+
   </div>
   <div class="form-group">
     <label  class="cols-sm-2 control-label">ORCID</label>
     <div class="input-container">
       <i class="fa fa-graduation-cap icon"></i>
-      <input class="input-field" type="text" placeholder="Orcid" formControlName="vorcid" [(ngModel)] = "orcid" [ngClass]="{ 'is-invalid': submitted && f.vorcid.errors }"   >
+      <input class="input-field" type="text" placeholder="Orcid" formControlName="vorcid" (blur)="showOrcid()" (focus)="closeAdvertencia()" [(ngModel)] = "orcid" [ngClass]="{ 'is-invalid': submitted && f.vorcid.errors }"   >
     </div>
     <div *ngIf="submitted && f.vorcid.errors" class="form-horizontal alert alert-danger fade in">
       <div *ngIf="f.vorcid.errors.required">Orcid es obligatorio</div>
@@ -99,14 +99,9 @@
       <div *ngIf="f.vaddress.errors.required">Addres es obligatorio</div>
     </div>
   </div>
-
-
-
   <div class="form-group">
     <button id="btnRegistro" class="btn btn-primary">Register</button>
   </div>
-
-
 </form>
 <div id="registroExisto" *ngIf="isregistro">
   <div  class="alert alert-success alert-dismissible">
