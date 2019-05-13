@@ -13,7 +13,7 @@ import {UserLogin} from '../../user/user-login-model';
 export class LoginComponent implements OnInit {
   @Output() MyEvent = new EventEmitter();
   private advertencia = false;
-  private mytoken: string;
+
   private advertenciaMensaje = '';
   userlogin: UserLogin;
   constructor(private conex: UserService) {
@@ -25,10 +25,6 @@ export class LoginComponent implements OnInit {
   closeAdvertencia(){
     this.advertencia = false;
   }
-  settoken(mytoken){
-    this.mytoken = mytoken;
-    console.log(this.mytoken);
-  }
 
   showUser(user: string, pass: string) {
     this.userlogin = {username: user, password: pass};
@@ -36,26 +32,17 @@ export class LoginComponent implements OnInit {
     this.conex.login(this.userlogin).subscribe(
       (respuesta) => {
         console.log(respuesta);
-        this.mytoken ='123456';
-        this.settoken(this.mytoken);
-        this.conex.addSession(this.mytoken);
-        this.advertencia = false;
-         console.log(respuesta);
          this.advertencia = false;
          this.MyEvent.emit();
       },
       (error) => {
-          console.log(error);
-          /*
-          if(error.status == 400)
-          {
+          if (error.status === 422) {
             this.advertenciaMensaje = 'Debe ingresar todos los campos';
-          } else if (error.status == 401)
-          {
+          } else if (error.status === 404){
             this.advertenciaMensaje = 'Usuario no existe';
           } else {
             this.advertenciaMensaje = 'ERROR SERVIDOR';
-          }*/
+          }
           this.advertencia = true;
       }
     );
