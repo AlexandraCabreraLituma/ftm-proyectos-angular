@@ -10,8 +10,6 @@ import {Subject, Subscription} from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  miStorage = window.sessionStorage;
-  private isToken$: Subject<boolean> = new Subject();
   constructor(private httpService: HttpService) { }
 
   saveUser(user: User): Observable<User> {
@@ -23,18 +21,4 @@ export class UserService {
     return this.httpService.login(ApiEndpoint.USERS + ApiEndpoint.LOGIN, JSON.stringify(user));
   }
 
-  validatorSession()
-  {
-    return this.isToken$.asObservable();
-  }
-
-  addSession(userid: string){
-   this.miStorage.setItem('myToken', userid);
-    console.log(userid);
-    this.isToken$.next(true);
-  }
-  cleanSession(){
-    this.miStorage.removeItem('myToken');
-    this.isToken$.complete();
-  }
 }

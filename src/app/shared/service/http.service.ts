@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
-import {Observable, throwError} from 'rxjs';
+import {Observable, Subject, throwError} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 
 
@@ -19,6 +19,8 @@ export class HttpService {
   private params: HttpParams;
   private responseType: string;
   private correctNotification = undefined;
+  miStorage = window.sessionStorage;
+  private isToken$: Subject<boolean> = new Subject();
 
   constructor(private http: HttpClient) {
     this.resetOptions();
@@ -39,12 +41,19 @@ export class HttpService {
   login(endPoint: string, user: Object): Observable<any> {
     return this.http.post(HttpService.API_END_POINT + endPoint, user, this.createOptions()).pipe(
       map(response => this.extractData(response, user)
-      ), catchError(error => {
-        return this.handleError(error);
+      ), (error => {
+        return (error);
       })
     );
   }
+  validatorLogin() {
+    return this.isToken$.asObservable();
+  }
 
+  logout() {
+    this.miStorage.removeItem('myToken');
+    this.isToken$.complete();
+  }
 
   private extractData(response, user?): any {
     console.log("extractData");
@@ -60,8 +69,10 @@ export class HttpService {
       if (contentType.indexOf('application/json') !== -1) {
         if (user != null) {
           console.log("user!=null");
-          //sessionStorage.setItem('username', JSON.parse(user).username);
-          //sessionStorage.setItem('userId', response.body.userId);
+          //this.miStorage.setItem('myToken', token);
+          sessionStorage.setItem('username', JSON.parse(user).username);
+          sessionStorage.setItem('userId', response.body.userId);
+          this.isToken$.next(true);
         }
         return response.body;
       }
@@ -76,6 +87,8 @@ export class HttpService {
         error = {error: 'Not Found', message: response.error.message, path: ''};
       } else if (response.status === HttpService.BAD_REQUEST) {
         error = {error: 'Bad Request', message: response.error.message, path: ''};
+      } else if (response.status === HttpService.HTTP_UNPROCESSABLE_ENTITY) {
+        error = {error: 'Unprocessable', message: response.error.message, path: ''};
       } else {
         error = response.error;
       }

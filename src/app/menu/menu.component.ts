@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../shared/service/user.service';
+import {HttpService} from '../shared/service/http.service';
 
 @Component({
   selector: 'app-menu',
@@ -11,10 +12,9 @@ export class MenuComponent implements OnInit {
   isSeesion = false;
   notSeesion = true;
 
-  constructor(private conex: UserService) {
-    this.conex.validatorSession().subscribe(
+  constructor(private conex: HttpService) {
+    this.conex.validatorLogin().subscribe(
       (respuesta) => {
-        console.log(respuesta.toString());
         this.isSeesion = true;
         this.notSeesion = false;
       }
@@ -32,6 +32,7 @@ export class MenuComponent implements OnInit {
     this.ismodal = false;
   }
   logout(){
+    this.conex.logout();
     this.isSeesion = false;
     this.notSeesion = true;
   }
