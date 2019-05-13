@@ -5,6 +5,7 @@ import {ApiEndpoint} from '../api-endpoint.model';
 import {User} from '../../user/user';
 import {UserLogin} from '../../user/user-login-model';
 import {Subject, Subscription} from 'rxjs';
+import {HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,8 @@ export class UserService {
   login(user: UserLogin): Observable<any> {
     return this.httpService.login(ApiEndpoint.USERS + ApiEndpoint.LOGIN, JSON.stringify(user));
   }
-  getUserName(userName: string) {
+  getUserName(userName: string): Observable<User> {
+
     return this.httpService.get(ApiEndpoint.USERS + '/' + userName);
   }
   getEmail(email: string) {

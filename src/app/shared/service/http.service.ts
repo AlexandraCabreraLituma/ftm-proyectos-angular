@@ -72,7 +72,7 @@ export class HttpService {
       });*/
       this.correctNotification = undefined;
     }
-    const contentType = response.headers.get('content-type');
+   const contentType = response.headers.get('content-type');
     if (contentType) {
       if (contentType.indexOf('application/json') !== -1) {
         if (user != null) {
@@ -82,9 +82,12 @@ export class HttpService {
           sessionStorage.setItem('userId', response.body.userId);
           this.isToken$.next(true);
         }
+        console.log("body");
         return response.body;
+
       }
     } else {
+      console.log("aqui");
       return response;
     }
   }
@@ -125,7 +128,8 @@ export class HttpService {
       headers: this.headers,
       params: this.params,
       responseType: this.responseType,
-      observe: 'response'
+      observe: 'response',
+
     };
     this.resetOptions();
     return options;

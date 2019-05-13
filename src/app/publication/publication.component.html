@@ -1,11 +1,18 @@
-<div>
-  <p *ngFor="let i of reservaList">
-    <span> </span>
-    <span> title: {{i.title}}</span>
-    <span> tipo: {{i.tipo}}</span>
-    <span>publicationDate: {{i.publicationDate}}</span>
-    <span>url :{{i.url}}</span>
-    <span>journalTitle: {{i.journalTitle}}</span>
-  </p>
+<div class="container" id="cardsInformacion">
+  <div *ngFor="let i of reservaList" class="row">
+
+      <div class="col-md-10 col-sm-2" >
+        <div class="card">
+          <h2 class="card-header">{{i.tipo}}:{{i.journalTitle}}</h2>
+          <div class="card-body">
+            <h4 class="card-title">{{i.title}}</h4>
+
+            <h6 class="card-subtitle mb-2 text-muted">{{i.publicationDate}}</h6>
+            <a href="{{i.url}}" class="btn btn-primary">Url</a>
+          </div>
+        </div>
+      </div>
+
+  </div>
 
 </div>
