@@ -1,0 +1,85 @@
+<form id="registroProject" [formGroup]="registerProjectForm" (ngSubmit)="onSubmit()" *ngIf="isformulario" >
+  <h2>Register Project</h2>
+
+  <div class="form-group">
+    <label  class="cols-sm-2 control-label">title</label>
+    <div class="input-container">
+      <i class="fa fa-university icon"></i>
+      <input type="text" formControlName="vtitle" [(ngModel)] = "title"   placeholder="Title"  class="input-field" [ngClass]="{ 'is-invalid': submitted && f.vtitle.errors }" />
+    </div>
+    <div *ngIf="submitted && f.vtitle.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vtitle.errors.required">Title is required</div>
+    </div>
+
+  </div>
+  <div class="form-group">
+    <label class="cols-sm-2 control-label">Description</label>
+    <div class="input-container">
+      <i class="fa fa-book icon"></i>
+      ​<textarea id="txtArea" rows="5" cols="70" placeholder="Description"   formControlName="vdescription"  [(ngModel)] = "description" [ngClass]="{ 'is-invalid': submitted && f.vdescription.errors }"></textarea>
+    </div>
+    <div *ngIf="submitted && f.vdescription.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vdescription.errors.required">Description is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label  class="cols-sm-2 control-label">Specific objets</label>
+    <div class="input-container">
+      <i class="fa fa-book icon"></i>
+      <input class="input-field" type="text" placeholder="Specific Objets" formControlName="vspecific_objects" [(ngModel)] = "specific_objects" [ngClass]="{ 'is-invalid': submitted && f.vspecific_objects.errors}">
+    </div>
+    <div *ngIf="submitted && f.vspecific_objects.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vspecific_objects.errors.required">Specific objects is required</div>
+    </div>
+
+  </div>
+  <div class="form-group">
+    <label  class="cols-sm-2 control-label">Initial Date</label>
+    <div class="input-container">
+      <i class="fa fa-calendar icon"></i>
+      <input class="input-field" type="date"  formControlName="vinitial_date"  [(ngModel)] = "initial_date" [ngClass]="{ 'is-invalid': submitted && f.vinitial_date.errors }"   >
+    </div>
+    <div *ngIf="submitted && f.vinitial_date.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vinitial_date.errors.required">Initial Date is required</div>
+
+    </div>
+
+  </div>
+  <div class="form-group">
+    <label  class="cols-sm-2 control-label">Final Date</label>
+    <div class="input-container">
+      <i class="fa fa-calendar icon"></i>
+      <input class="input-field" type="date"  formControlName="vfinal_date"  [(ngModel)] = "final_date"  (blur)="comparate()" [ngClass]="{ 'is-invalid': submitted && f.vfinal_date.errors }"   >
+    </div>
+    <div *ngIf="submitted && f.vfinal_date.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vfinal_date.errors.required">Final Date is required</div>
+
+    </div>
+
+  </div>
+  <div class="form-group">
+    <label  class="cols-sm-2 control-label">Category</label>
+    <div class="input-container">
+      <i class="fa fa-graduation-cap icon"></i>
+      <input class="input-field" type="text" formControlName="vcategory" [(ngModel)] = "category" [ngClass]="{ 'is-invalid': submitted && f.vcategory.errors }"   >
+    </div>
+    <div *ngIf="submitted && f.vcategory.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vcategory.errors.required">Category is required</div>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <button id="btnRegistro" class="btn btn-primary">Register</button>
+  </div>
+</form>
+<div id="registroExisto" *ngIf="isregistro">
+  <div  class="alert alert-success alert-dismissible">
+    <strong>Congratulations!</strong> User Register!!!
+    <br>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
