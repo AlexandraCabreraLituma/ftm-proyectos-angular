@@ -1,4 +1,4 @@
-export class PublicationModel {
+export class Publication {
   title?: String;
   tipo?: String;
   publicationDate?: String;

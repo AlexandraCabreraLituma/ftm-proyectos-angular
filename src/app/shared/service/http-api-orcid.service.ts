@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {Observable, Subject, Subscription} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
-import {PublicationModel} from '../model/publication-model';
+import {Publication} from '../model/publication';
 import {ReturnStatement} from '@angular/compiler';
 import {ApiEndpoint} from '../api-endpoint.model';
 

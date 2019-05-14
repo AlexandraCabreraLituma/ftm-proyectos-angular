@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpService} from './http.service';
 import {Observable} from 'rxjs';
 import {ApiEndpoint} from '../api-endpoint.model';
-import {User} from '../../user/user';
-import {UserLogin} from '../../user/user-login-model';
+import {User} from '../model/user';
+import {UserLogin} from '../model/user-login';
 import {Subject, Subscription} from 'rxjs';
 import {HttpHeaders} from '@angular/common/http';
 
