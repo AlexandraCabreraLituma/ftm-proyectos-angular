@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpApiOrcidService} from '../shared/service/http-api-orcid.service';
 import {Observable} from 'rxjs';
-import {PublicationModel} from '../shared/model/publication-model';
+import {Publication} from '../shared/model/publication';
 import {ApiEndpoint} from '../shared/api-endpoint.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
@@ -14,7 +14,7 @@ interface ObjRespone {
   providedIn: 'root'
 })
 export class PublicationService {
-  publicationList: PublicationModel[] = [];
+  publicationList: Publication[] = [];
   constructor(private httpService: HttpApiOrcidService) { }
 
   readAll(corid): Observable<any> {

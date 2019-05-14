@@ -3,7 +3,7 @@ import {MenuComponent} from '../menu.component';
 import {collectExternalReferences} from '@angular/compiler';
 import {UserService} from '../../shared/service/user.service';
 
-import {UserLogin} from '../../user/user-login-model';
+import {UserLogin} from '../../shared/model/user-login';
 
 @Component({
   selector: 'app-login',

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpApiOrcidService} from '../shared/service/http-api-orcid.service';
 import {PublicationService} from './publication.service';
-import {PublicationModel} from '../shared/model/publication-model';
+import {Publication} from '../shared/model/publication';
 import {UserService} from '../shared/service/user.service';
-import {User} from '../user/user';
-import {UserMinimo} from './user-minimo';
+import {User} from '../shared/model/user';
+import {UserMinimo} from '../shared/model/user-minimo';
 
 @Component({
   selector: 'app-publication',
@@ -12,8 +12,8 @@ import {UserMinimo} from './user-minimo';
   styleUrls: ['./publication.component.css']
 })
 export class PublicationComponent implements OnInit {
-  paper: PublicationModel = {title: null, tipo: null, publicationDate : null, url : null, journalTitle : null };
-  reservaList: PublicationModel[] = [];
+  paper: Publication = {title: null, tipo: null, publicationDate : null, url : null, journalTitle : null };
+  reservaList: Publication[] = [];
   miStorage = window.sessionStorage;
   username = '';
   data: UserMinimo = {username: '', email: '', orcid: ''};
