@@ -7,8 +7,19 @@
       <ul class="nav navbar-nav">
         <li ><a routerLink="home">Home</a></li>
         <li><a *ngIf="isSeesion" routerLink="publication">Publication</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Project <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="project">Register</a></li>
+            <li><a href="#">Show</a></li>
+            <li><a href="#">Edit</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Delete</a></li>
+          </ul>
+        </li>
 
       </ul>
+
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="notSeesion" ><a routerLink="user" ><span class="glyphicon glyphicon-user"></span> Registro</a></li>
         <li *ngIf="notSeesion" ><a id="login"  (click)="showmodal()"><span id="iconLogin" class="glyphicon glyphicon-log-in"></span>login</a></li>

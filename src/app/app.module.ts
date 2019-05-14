@@ -17,6 +17,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {UserService} from './shared/service/user.service';
 import {HttpService} from './shared/service/http.service';
 import {LoginComponent} from './menu/login/login.component';
+import { ProjectComponent } from './project/project.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {LoginComponent} from './menu/login/login.component';
     FooterComponent,
     PublicationComponent,
     UserComponent,
-    LoginComponent
+    LoginComponent,
+    ProjectComponent
   ],
   imports: [
     BrowserModule,
