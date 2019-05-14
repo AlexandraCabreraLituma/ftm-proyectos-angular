@@ -11,7 +11,9 @@ import {Router} from '@angular/router';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  private advertencia = false;
+  private advertenciaUserName = false;
+  private advertenciaEmail = false;
+  private advertenciaOrcid = false;
   private msgadvertencia = '';
   private registerForm: FormGroup;
   private submitted = false;
@@ -44,24 +46,30 @@ export class UserComponent implements OnInit {
     this.advertenciaContresena = false;
   }
 
-  closeAdvertencia() {
-    this.advertencia = false;
+  closeAdvertenciaUserName() {
+    this.advertenciaUserName = false;
+  }
+  closeAdvertenciaEmail() {
+    this.advertenciaEmail = false;
+  }
+  closeAdvertenciaOrcid() {
+    this.advertenciaOrcid = false;
   }
 
   showUserName() {
     console.log(this.username);
     this.userService.getUserName(this.username).subscribe(
       (respuesta) => {
-        this.msgadvertencia = 'Usuario ya existe';
-        this.advertencia = true;
+        this.msgadvertencia = 'User already exists';
+        this.advertenciaUserName = true;
       },
       (error) => {
         console.log(error);
         if (error.status === 404){
-          this.advertencia = false;
+          this.advertenciaUserName = false;
         } else if (error.status === 500) {
           this.msgadvertencia = 'Internal server error';
-          this.advertencia = true;
+          this.advertenciaUserName = true;
         }
 
       }
@@ -71,16 +79,16 @@ export class UserComponent implements OnInit {
   showEmail() {
     this.userService.getEmail(this.email).subscribe(
       (respuesta) => {
-        this.msgadvertencia = 'Email ya existe';
-        this.advertencia = true;
+        this.msgadvertencia = 'Email already exists';
+        this.advertenciaEmail = true;
       },
       (error) => {
         console.log(error);
         if (error.status === 404) {
-          this.advertencia = false;
+          this.advertenciaEmail = false;
         } else if (error.status === 500) {
           this.msgadvertencia = 'Internal server error';
-          this.advertencia = true;
+          this.advertenciaEmail = true;
         }
 
       }
@@ -90,16 +98,16 @@ export class UserComponent implements OnInit {
     console.log(this.email);
     this.userService.getOrcid(this.orcid).subscribe(
       (respuesta) => {
-        this.msgadvertencia = 'ORCID ya existe';
-        this.advertencia = true;
+        this.msgadvertencia = 'ORCID  ready exists';
+        this.advertenciaOrcid = true;
       },
       (error) => {
         console.log(error);
-        if (error.status === 404){
-          this.advertencia = false;
+        if (error.status === 404) {
+          this.advertenciaOrcid = false;
         } else if (error.status === 500) {
           this.msgadvertencia = 'Internal server error';
-          this.advertencia = true;
+          this.advertenciaOrcid = true;
         }
 
       }
@@ -131,7 +139,7 @@ export class UserComponent implements OnInit {
       console.log("datos invalidos");
       return;
     } else {
-      if (this.advertencia=== false){
+      if (this.advertenciaUserName === false && this.advertenciaOrcid === false && this.advertenciaEmail === false) {
         this.add();
       }
       console.log("datos validos");

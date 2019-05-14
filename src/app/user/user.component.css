@@ -50,7 +50,7 @@
   margin:auto;
 }
 
-#dialogAdvertencia{
+#dialogAdvertenciaUserName,#dialogAdvertenciaEmail,#dialogAdvertenciaOrcid{
   text-align:center;
 
 }
