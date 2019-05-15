@@ -12,8 +12,7 @@ import {ProjectService} from '../shared/service/project.service';
   styleUrls: ['./project.component.css']
 })
 export class ProjectComponent implements OnInit {
-  private advertenciaUserName = false;
-  private msgadvertencia = '';
+  private advertenciaFinalDate = false;
   private registerProjectForm: FormGroup;
   private submitted = false;
   private title: string;
@@ -30,8 +29,7 @@ export class ProjectComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private projectService: ProjectService,
-              private http: HttpService,
-              private userService: UserService) {
+              private http: HttpService) {
 
     //  this.homeUrl = data.homeUrl;
   }
@@ -54,19 +52,21 @@ export class ProjectComponent implements OnInit {
   }
 
   comparate() {
-    return this.initial_date > this.final_date;
+    if (this.initial_date > this.final_date) {
+      this.advertenciaFinalDate = true;
+    }
   }
-
+  closeFinalDate() {
+    this.advertenciaFinalDate = false;
+  }
   onSubmit() {
     this.submitted = true;
     if (this.registerProjectForm.invalid) {
       console.log("datos invalidos");
       return;
     } else {
-      if (this.comparate()) {
         console.log("datos validos");
         this.add();
-      }
     }
 
   }

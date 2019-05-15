@@ -49,11 +49,14 @@
     <label  class="cols-sm-2 control-label">Final Date</label>
     <div class="input-container">
       <i class="fa fa-calendar icon"></i>
-      <input class="input-field" type="date"  formControlName="vfinal_date"  [(ngModel)] = "final_date"  (blur)="comparate()" [ngClass]="{ 'is-invalid': submitted && f.vfinal_date.errors }"   >
+      <input class="input-field" type="date"  formControlName="vfinal_date"  [(ngModel)] = "final_date" (focus)="closeFinalDate()" (blur)="comparate()" [ngClass]="{ 'is-invalid': submitted && f.vfinal_date.errors }"   >
     </div>
     <div *ngIf="submitted && f.vfinal_date.errors" class="form-horizontal alert alert-danger fade in">
       <div *ngIf="f.vfinal_date.errors.required">Final Date is required</div>
 
+    </div>
+    <div *ngIf="advertenciaFinalDate" id="dialogAdvertenciaFinalDate"class="form-horizontal alert alert-danger fade in" >
+      <strong >Warning: Final Date is wrong</strong>
     </div>
 
   </div>
@@ -75,7 +78,7 @@
 </form>
 <div id="registroExisto" *ngIf="isregistro">
   <div  class="alert alert-success alert-dismissible">
-    <strong>Congratulations!</strong> User Register!!!
+    <strong>Congratulations!</strong> Project Register!!!
     <br>
   </div>
 </div>
