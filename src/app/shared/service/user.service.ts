@@ -21,6 +21,9 @@ export class UserService {
   login(user: UserLogin): Observable<any> {
     return this.httpService.login(ApiEndpoint.USERS + ApiEndpoint.LOGIN, JSON.stringify(user));
   }
+  getUserId(userid: number): Observable<User> {
+    return this.httpService.get(ApiEndpoint.USERS +  '/' + userid);
+  }
   getUserName(userName: string): Observable<User> {
     return this.httpService.get(ApiEndpoint.USERS + ApiEndpoint.USERNAME + '/' + userName);
   }

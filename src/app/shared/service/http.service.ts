@@ -57,14 +57,15 @@ export class HttpService {
   validatorLogin() {
     return this.isToken$.asObservable();
   }
-
+  showUserId() {
+    return  sessionStorage.getItem('userId');
+  }
   logout() {
     this.miStorage.removeItem('myToken');
     this.isToken$.complete();
   }
 
   private extractData(response, user?): any {
-    console.log("extractData");
     if (this.correctNotification) {
       /*
       this.snackBar.open(this.correctNotification, '', {
@@ -76,13 +77,11 @@ export class HttpService {
     if (contentType) {
       if (contentType.indexOf('application/json') !== -1) {
         if (user != null) {
-          console.log("user!=null");
           //this.miStorage.setItem('myToken', token);
           sessionStorage.setItem('username', JSON.parse(user).username);
-          sessionStorage.setItem('userId', response.body.userId);
+          sessionStorage.setItem('userId', response.body.userid);
           this.isToken$.next(true);
         }
-        console.log("body");
         return response.body;
 
       }

@@ -18,6 +18,7 @@ import {UserService} from './shared/service/user.service';
 import {HttpService} from './shared/service/http.service';
 import {LoginComponent} from './menu/login/login.component';
 import { ProjectComponent } from './project/project.component';
+import {ProjectService} from './shared/service/project.service';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ProjectComponent } from './project/project.component';
   providers: [HttpApiOrcidService,
               PublicationService,
               UserService,
+              ProjectService,
               HttpService],
   bootstrap: [AppComponent]
 })
