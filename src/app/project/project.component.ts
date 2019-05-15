@@ -3,7 +3,9 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import {User} from '../shared/model/user';
 import {UserService} from '../shared/service/user.service';
 import {Router} from '@angular/router';
-
+import {Project} from '../shared/model/project';
+import {HttpService} from '../shared/service/http.service';
+import {ProjectService} from '../shared/service/project.service';
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
@@ -18,21 +20,26 @@ export class ProjectComponent implements OnInit {
   private description: string;
   private category: string;
   private specific_objects: string;
-  private initial_date: string;
-  private final_date: string;
-  private phone: number;
-
+  private initial_date: Date;
+  private final_date: Date;
+  project: Project;
+  userid: string;
+  user: User;
   private isregistro = false;
   private isformulario = true;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
+  constructor(private formBuilder: FormBuilder,
+              private projectService: ProjectService,
+              private http: HttpService,
+              private userService: UserService) {
 
     //  this.homeUrl = data.homeUrl;
   }
 
 
   ngOnInit() {
-    this.registerProjectForm = this.formBuilder.group({
+     this.userid = this.http.showUserId();
+     this.registerProjectForm = this.formBuilder.group({
       vtitle: ['', [Validators.required]],
       vdescription: ['', [Validators.required]],
       vspecific_objects: ['', [Validators.required]],
@@ -47,12 +54,7 @@ export class ProjectComponent implements OnInit {
   }
 
   comparate() {
-    console.log(this.initial_date);
-    if (this.initial_date > this.final_date) {
-      console.log("fechas invalidas");
-
-    }
-
+    return this.initial_date > this.final_date;
   }
 
   onSubmit() {
@@ -61,9 +63,35 @@ export class ProjectComponent implements OnInit {
       console.log("datos invalidos");
       return;
     } else {
-      console.log("datos validos");
+      if (this.comparate()) {
+        console.log("datos validos");
+        this.add();
+      }
     }
 
   }
+
+  add() {
+    this.project = {title: this.title,
+                    description: this.description,
+                    specific_objectives: this.specific_objects,
+                    initial_date: this.initial_date,
+                    final_date: this.final_date,
+                    enabled: true,
+                    category: this.category,
+                    user_id: Number.parseInt(this.userid, 10)};
+
+
+    this.projectService.saveProject(this.project).subscribe(response => {
+      console.log('regsitro Correcto');
+      this.isregistro = true;
+      this.isformulario = false;
+    }, error => {
+      this.isregistro = false;
+      this.isformulario = true;
+      console.log('ERROR:', error);
+    });
+  }
+
 
 }
