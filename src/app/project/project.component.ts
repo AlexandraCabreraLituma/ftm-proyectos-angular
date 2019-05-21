@@ -26,7 +26,7 @@ export class ProjectComponent implements OnInit {
   user: User;
   private isregistro = false;
   private isformulario = true;
-
+  categories = ["Inteligencia artificial", "Ingeniería aeronáutica ", "Meteorología","OTROS"];
   constructor(private formBuilder: FormBuilder,
               private projectService: ProjectService,
               private http: HttpService) {
