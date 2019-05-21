@@ -60,17 +60,23 @@
     </div>
 
   </div>
+
   <div class="form-group">
-    <label  class="cols-sm-2 control-label">Category</label>
+
+    <label  class="cols-sm-2 control-label">Choose category:</label>
     <div class="input-container">
-      <i class="fa fa-graduation-cap icon"></i>
-      <input class="input-field" type="text" formControlName="vcategory" [(ngModel)] = "category" [ngClass]="{ 'is-invalid': submitted && f.vcategory.errors }"   >
+      <i class="fa fa-soccer-ball-o icon"></i>
+      <select class="input-field"  formControlName="vcategory"  [(ngModel)] = "category"  [ngClass]="{ 'is-invalid': submitted && f.vcategory.errors }">
+        <ng-container *ngFor="let categori of categories" >
+          <option value= {{categori}}>{{categori}} </option>
+        </ng-container>
+      </select>
     </div>
     <div *ngIf="submitted && f.vcategory.errors" class="form-horizontal alert alert-danger fade in">
       <div *ngIf="f.vcategory.errors.required">Category is required</div>
     </div>
-
   </div>
+
 
   <div class="form-group">
     <button id="btnRegistro" class="btn btn-primary">Register</button>
