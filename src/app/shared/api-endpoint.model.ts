@@ -7,4 +7,5 @@ export class ApiEndpoint {
   public static EMAIL = '/email';
   public static ORCID = '/orcid';
   public static PROJECTS = '/projects';
+  public static ENABLED = '/enabled';
 }
