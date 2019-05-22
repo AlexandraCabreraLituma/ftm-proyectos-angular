@@ -1,7 +1,7 @@
 <div class="container">
   <div class="btn-group container" role="group">
     <button class="btn btn-lg btn-secondary" (click)="readProjectUser()"><span class="glyphicon glyphicon-search"></span> All</button>
-  <button class="btn btn-lg btn-secondary" (click)="readProyectUserEnabled()"><span class="fa fa-check-circle-o text-success"></span> Activo</button>
+  <button class="btn btn-lg btn-secondary" (click)="readProyectUserEnabled()"><span class="fa fa-check-circle-o text-success"></span> Enabled</button>
   </div>
 </div>
 <br>
@@ -19,6 +19,8 @@
               <i class="fa fa-close fa-3x text-danger" *ngIf="!i.enabled" ></i>
               <h6 class="card-subtitle mb-2 text-muted">Initial Date: {{i.initial_date}}</h6>
               <h6 class="card-subtitle mb-2 text-muted">Final Date: {{i.final_date}}</h6>
+              <h5 class="card-title">Category:{{i.category}}</h5>
+
             </div>
             <div class="col-sm-7 text-left">
               <h4 class="card-title">Description:</h4>
