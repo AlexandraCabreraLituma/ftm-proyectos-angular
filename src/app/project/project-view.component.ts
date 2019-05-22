@@ -20,7 +20,15 @@ export class ProjectViewComponent implements OnInit {
 
 
   ngOnInit() {
+    this.readProjectUser();
+  }
+  readProjectUser() {
     this.projectService.readProyectByUser(Number.parseInt(this.userid, 10)).subscribe(
+      projects => this.data = projects['projects']
+    );
+  }
+  readProyectUserEnabled() {
+    this.projectService.readProyectByUserEnabled(Number.parseInt(this.userid, 10)).subscribe(
       projects => this.data = projects['projects']
     );
   }

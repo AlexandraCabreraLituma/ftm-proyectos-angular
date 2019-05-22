@@ -19,5 +19,8 @@ export class ProjectService {
   readProyectByUser(userid: number): Observable<Project[]> {
     return this.httpService.get(ApiEndpoint.PROJECTS +  ApiEndpoint.USERS + '/' + userid);
   }
+  readProyectByUserEnabled(userid: number): Observable<Project[]> {
+    return this.httpService.get(ApiEndpoint.PROJECTS + ApiEndpoint.USERS + ApiEndpoint.ENABLED + '/' + userid);
+  }
 
 }
