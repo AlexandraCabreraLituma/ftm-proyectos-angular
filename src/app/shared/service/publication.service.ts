@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpApiOrcidService} from '../shared/service/http-api-orcid.service';
+import {HttpApiOrcidService} from './http-api-orcid.service';
 import {Observable} from 'rxjs';
-import {Publication} from '../shared/model/publication';
-import {ApiEndpoint} from '../shared/api-endpoint.model';
+import {Publication} from '../model/publication';
+import {ApiEndpoint} from '../api-endpoint.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 

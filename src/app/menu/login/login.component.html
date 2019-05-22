@@ -24,8 +24,8 @@
         <strong >ATENCI&Oacute;N:</strong>{{advertenciaMensaje}}
       </div>
       <div class="modal-footer">
-        <input  id="botonLogin" type="button" class="btn btn-default" value="Enviar"  (click)="showUser(theuser.value,thepassword.value)">
-        <input  id="botonCerrarLogin" type="button" class="btn btn-default" value="Close"  (click) = "closeModal()">
+        <button class="btn btn-success" (click)="showUser(theuser.value,thepassword.value)">Enviar</button>
+        <button class="btn btn-danger" (click) = "closeModal()">Close</button>
       </div>
     </form>
   </div>
