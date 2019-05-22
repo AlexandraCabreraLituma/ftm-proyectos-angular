@@ -1,2 +1,39 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.card-columns .card {
+  display: inline-block;
+  width: 100%;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 200px !important;
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
+}
+.card-header{
+  padding: .75rem 1.25rem;
+  margin-bottom: 0;
+}
+
+.card{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  text-align: left;
+  font-size: 18px;
+}
+.card-li{
+  text-align: left;
+  color: darkblue;
+}
+
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+}
