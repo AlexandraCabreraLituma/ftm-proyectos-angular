@@ -19,6 +19,7 @@ import {HttpService} from './shared/service/http.service';
 import {LoginComponent} from './menu/login/login.component';
 import { ProjectComponent } from './project/project.component';
 import {ProjectService} from './shared/service/project.service';
+import { ProjectViewComponent } from './project/project-view.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {ProjectService} from './shared/service/project.service';
     PublicationComponent,
     UserComponent,
     LoginComponent,
-    ProjectComponent
+    ProjectComponent,
+    ProjectViewComponent
   ],
   imports: [
     BrowserModule,
