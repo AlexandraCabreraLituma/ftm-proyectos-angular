@@ -20,6 +20,9 @@ import {LoginComponent} from './menu/login/login.component';
 import { ProjectComponent } from './project/project.component';
 import {ProjectService} from './shared/service/project.service';
 import { ProjectViewComponent } from './project/project-view.component';
+import { ProfileComponent } from './profile/profile.component';
+import {ProfileService} from './shared/service/profile.service';
+import {ProfileViewComponent} from './profile/profile-view.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,9 @@ import { ProjectViewComponent } from './project/project-view.component';
     UserComponent,
     LoginComponent,
     ProjectComponent,
-    ProjectViewComponent
+    ProjectViewComponent,
+    ProfileComponent,
+    ProfileViewComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +50,7 @@ import { ProjectViewComponent } from './project/project-view.component';
               PublicationService,
               UserService,
               ProjectService,
+              ProfileService,
               HttpService],
   bootstrap: [AppComponent]
 })
