@@ -15,6 +15,7 @@ export class MenuComponent implements OnInit {
   constructor(private conex: HttpService) {
     this.conex.validatorLogin().subscribe(
       (respuesta) => {
+        console.log(respuesta);
         this.isSeesion = true;
         this.notSeesion = false;
       }
