@@ -23,13 +23,13 @@
     </div>
   </div>
   <div class="form-group">
-    <label  class="cols-sm-2 control-label">Specific objets</label>
+    <label  class="cols-sm-2 control-label">Key words</label>
     <div class="input-container">
       <i class="fa fa-book icon"></i>
-      <input class="input-field" type="text" placeholder="Specific Objets" formControlName="vspecific_objects" [(ngModel)] = "specific_objects" [ngClass]="{ 'is-invalid': submitted && f.vspecific_objects.errors}">
+      <input class="input-field" type="text" placeholder="Key words" formControlName="vkey_words" [(ngModel)] = "key_words" [ngClass]="{ 'is-invalid': submitted && f.vkey_words.errors}">
     </div>
-    <div *ngIf="submitted && f.vspecific_objects.errors" class="form-horizontal alert alert-danger fade in">
-      <div *ngIf="f.vspecific_objects.errors.required">Specific objects is required</div>
+    <div *ngIf="submitted && f.vkey_words.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vkey_words.errors.required">Key words objects is required</div>
     </div>
 
   </div>
@@ -60,7 +60,7 @@
     </div>
 
   </div>
-
+  <!--
   <div class="form-group">
 
     <label  class="cols-sm-2 control-label">Choose category:</label>
@@ -76,7 +76,7 @@
       <div *ngIf="f.vcategory.errors.required">Category is required</div>
     </div>
   </div>
-
+  -->
 
   <div class="form-group">
     <button id="btnRegistro" class="btn btn-primary">Register</button>
