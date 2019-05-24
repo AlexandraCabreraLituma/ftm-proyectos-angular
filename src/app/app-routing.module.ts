@@ -5,6 +5,8 @@ import {PublicationComponent} from './publication/publication.component';
 import {UserComponent} from './user/user.component';
 import {ProjectComponent} from './project/project.component';
 import {ProjectViewComponent} from './project/project-view.component';
+import {ProfileComponent} from './profile/profile.component';
+import {ProfileViewComponent} from './profile/profile-view.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -12,6 +14,8 @@ const routes: Routes = [
   { path: 'user', component: UserComponent },
   { path: 'project', component: ProjectComponent },
   { path: 'project-view', component: ProjectViewComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'profile-view', component: ProfileViewComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 

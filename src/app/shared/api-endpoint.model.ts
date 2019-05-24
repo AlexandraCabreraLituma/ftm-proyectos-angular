@@ -8,4 +8,5 @@ export class ApiEndpoint {
   public static ORCID = '/orcid';
   public static PROJECTS = '/projects';
   public static ENABLED = '/enabled';
+  public static PROFILES = '/profiles';
 }

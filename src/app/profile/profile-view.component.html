@@ -1,0 +1,33 @@
+
+<div class="container" id="cardsInformacion">
+
+  <div *ngFor="let i of data" >
+
+    <div class="card">
+      <h1 class="w3-panel card-header bg-primary text-center">{{i.name}}</h1>
+      <div class="card-body">
+        <div class="row vdivide">
+          <div class="col-sm-4 text-center">
+
+            <h6 class="card-subtitle mb-2 text-muted">Working Day: {{i.working_day}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Level: {{i.nivel}}</h6>
+            <!--  <h5 class="card-title">Category:{{i.category}}</h5>
+              -->
+          </div>
+          <div class="col-sm-7 text-left">
+            <h4 class="card-title">Description:</h4>
+            <p class="card-text">{{i.description}}</p>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <br>
+    <br>
+
+
+
+  </div>
+
+</div>
