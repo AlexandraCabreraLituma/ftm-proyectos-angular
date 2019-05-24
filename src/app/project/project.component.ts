@@ -43,7 +43,6 @@ export class ProjectComponent implements OnInit {
       vkey_words: ['', [Validators.required]],
       vinitial_date: ['', [Validators.required]],
       vfinal_date: ['', [Validators.required]],
-      vcategory: ['', [Validators.required]],
     });
   }
 
@@ -65,22 +64,22 @@ export class ProjectComponent implements OnInit {
       console.log("datos invalidos");
       return;
     } else {
-        console.log("datos validos");
+        console.log("datos validos registro project");
+        this.add();
 
     }
 
   }
 
   add() {
-    console.log("add");
     this.project = {title: this.title,
                     description: this.description,
                     key_words: this.key_words,
                     initial_date: this.initial_date,
                     final_date: this.final_date,
                     enabled: true,
-                    user_id: Number.parseInt(this.userid, 10)};
-    console.log(this.project);
+                    user_id: Number.parseInt(this.userid, 10)
+    };
 
     this.projectService.saveProject(this.project).subscribe(response => {
       console.log('regsitro Correcto');

@@ -22,6 +22,7 @@
     </div>
     <div *ngIf="submitted && f.vpassword.errors" class="form-horizontal alert alert-danger fade in">
       <div *ngIf="f.vpassword.errors.required">Password is required</div>
+      <div *ngIf="f.vpassword.errors.minlength">Min 6 characters</div>
     </div>
   </div>
   <div class="form-group">
@@ -32,6 +33,7 @@
     </div>
     <div *ngIf="submitted && f.vreppassword.errors" class="form-horizontal alert alert-danger fade in">
       <div *ngIf="f.vreppassword.errors.required">Password is required</div>
+      <div *ngIf="f.vreppassword.errors.minlength">Min 6 characters</div>
     </div>
     <div *ngIf="advertenciaContresena" id="advertenciaPasword"class="form-horizontal alert alert-danger fade in" >
       <strong >ATENCI&Oacute;N:</strong>Passwords are different
@@ -59,6 +61,7 @@
     </div>
     <div *ngIf="submitted && f.vorcid.errors" class="form-horizontal alert alert-danger fade in">
       <div *ngIf="f.vorcid.errors.required">Orcid is required</div>
+      <div *ngIf="f.vorcid.errors.pattern">Format ORCID 0000-0000-0000-0000</div>
     </div>
     <div *ngIf="advertenciaOrcid" id="dialogAdvertenciaOrcid"class="form-horizontal alert alert-danger fade in" >
       <strong >Warning:</strong>{{msgadvertencia}}

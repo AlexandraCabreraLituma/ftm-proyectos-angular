@@ -118,9 +118,9 @@ export class UserComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       vuserName: ['', [Validators.required]],
       vemail: ['', [Validators.required, Validators.email]],
-      vpassword: ['', [Validators.required]],
-      vreppassword: ['', [Validators.required]],
-      vorcid: ['', [Validators.required]],
+      vpassword: ['', [Validators.required, Validators.minLength(5)]],
+      vreppassword: ['', [Validators.required, Validators.minLength(5)]],
+      vorcid: ['', [Validators.required, Validators.pattern('[0-9]{4}[-]{1}[0-9]{4}[-]{1}[0-9]{4}[-]{1}[0-9]{4}')]],
       vfirstname: ['', [Validators.required]],
       vlastname: ['', [Validators.required]],
       vphone: ['', [Validators.required, Validators.pattern('[0-9]{9}')]],
