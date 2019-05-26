@@ -12,6 +12,10 @@ export class ProfileService {
 
   constructor(private httpService: HttpService) { }
 
+  saveProfile(profile: Profile): Observable<Profile> {
+    return this.httpService.post(ApiEndpoint.PROFILES, JSON.stringify(profile));
+  }
+
   readProfileByUser(userid: number): Observable<Profile[]> {
     return this.httpService.get(ApiEndpoint.PROFILES +  ApiEndpoint.USERS + '/' + userid);
   }

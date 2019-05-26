@@ -1,3 +1,68 @@
-<p>
-  profile works!
-</p>
+<form id="registro" [formGroup]="registerProfileForm" (ngSubmit)="onSubmit()" *ngIf="isformulario" >
+  <h2>Register Profile</h2>
+
+  <div class="form-group">
+    <label  class="cols-sm-2 control-label">name</label>
+    <div class="input-container">
+      <i class="fa fa-user-circle-o icon"></i>
+      <input type="text" formControlName="vname" [(ngModel)] = "name"   placeholder="Name"  class="input-field" [ngClass]="{ 'is-invalid': submitted && f.vname.errors }" />
+    </div>
+    <div *ngIf="submitted && f.vname.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vname.errors.required">Name is required</div>
+    </div>
+
+  </div>
+  <div class="form-group">
+    <label class="cols-sm-2 control-label">Description</label>
+    <div class="input-container">
+      <i class="fa fa-book icon"></i>
+      ​<textarea id="txtArea" rows="5" cols="70" placeholder="Description"   formControlName="vdescription"  [(ngModel)] = "description" [ngClass]="{ 'is-invalid': submitted && f.vdescription.errors }"></textarea>
+    </div>
+    <div *ngIf="submitted && f.vdescription.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vdescription.errors.required">Description is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label  class="cols-sm-2 control-label">Choose Working Day:</label>
+    <div class="input-container">
+      <i class="fa fa-building icon"></i>
+      <select class="input-field"  formControlName="vworking_day"  [(ngModel)] = "working_day"  [ngClass]="{ 'is-invalid': submitted && f.vworking_day.errors }">
+        <ng-container *ngFor="let w_d of working_days" >
+          <option value= {{w_d}}>{{w_d}} </option>
+        </ng-container>
+      </select>
+    </div>
+    <div *ngIf="submitted && f.vworking_day.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vworking_day.errors.required">Working Day is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label  class="cols-sm-2 control-label">Choose Level:</label>
+    <div class="input-container">
+      <i class="fa fa-graduation-cap icon"></i>
+      <select class="input-field"  formControlName="vnivel"  [(ngModel)] = "nivel"  [ngClass]="{ 'is-invalid': submitted && f.vnivel.errors }">
+        <ng-container *ngFor="let nive of nivels" >
+          <option value= {{nive}}>{{nive}} </option>
+        </ng-container>
+      </select>
+    </div>
+    <div *ngIf="submitted && f.vnivel.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vnivel.errors.required">Level is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <button id="btnRegistro" class="btn btn-primary">Register</button>
+  </div>
+</form>
+<div id="registroExisto" *ngIf="isregistro">
+  <div  class="alert alert-success alert-dismissible">
+    <strong>Congratulations!</strong> Profile Register!!!
+    <br>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
