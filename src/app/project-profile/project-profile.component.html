@@ -1,0 +1,49 @@
+<form id="registro" [formGroup]="registerProjectProfileForm" (ngSubmit)="onSubmit()" >
+  <h2>Register Proyect Profile</h2>
+  <div class="form-group">
+    <label  class="cols-sm-2 control-label">Choose Proyect:</label>
+    <div class="input-container">
+      <i class="fa fa-building icon"></i>
+      <select class="input-field"  formControlName="vproject"  [(ngModel)] = "project_id" (focus)="closewaring()"  [ngClass]="{ 'is-invalid': submitted && f.vproject.errors }">
+        <ng-container *ngFor="let proye of proyects" >
+          <option value= {{proye.id}}>{{proye.title}} </option>
+        </ng-container>
+      </select>
+    </div>
+    <div *ngIf="submitted && f.vproject.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vproject.errors.required">Project is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label  class="cols-sm-2 control-label">Choose Profile:</label>
+    <div class="input-container">
+      <i class="fa fa-graduation-cap icon"></i>
+      <select class="input-field"  formControlName="vprofile"  [(ngModel)] = "profile_id"  [ngClass]="{ 'is-invalid': submitted && f.vprofile.errors }">
+        <ng-container *ngFor="let prof of profiles" >
+          <option value= {{prof.id}}>{{prof.name}} </option>
+        </ng-container>
+      </select>
+    </div>
+    <div *ngIf="submitted && f.vprofile.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vprofile.errors.required">Profile is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <button id="btnRegistro" class="btn btn-primary">Register</button>
+  </div>
+  <div *ngIf="advertencia" class="text-center form-horizontal alert alert-danger fade in" >
+    <strong>Register exists</strong>
+  </div>
+</form>
+
+<div id="registroExisto" *ngIf="isregistro">
+  <div  class="alert alert-success alert-dismissible">
+    <strong>Congratulations!</strong> Register!!!
+    <br>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>

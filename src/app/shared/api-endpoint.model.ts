@@ -9,4 +9,5 @@ export class ApiEndpoint {
   public static PROJECTS = '/projects';
   public static ENABLED = '/enabled';
   public static PROFILES = '/profiles';
+  public static PROJECTSPROFILE = '/projectsProfiles';
 }

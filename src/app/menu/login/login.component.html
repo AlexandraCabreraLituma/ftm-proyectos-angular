@@ -20,9 +20,10 @@
         </div>
       </div>
 
-      <div *ngIf="advertencia" id="dialogAdvertencia"class="form-horizontal alert alert-danger fade in" >
+      <div *ngIf="advertencia"  id="dialogAdvertencia" class="form-horizontal  alert alert-danger fade in" >
         <strong >ATENCI&Oacute;N:</strong>{{advertenciaMensaje}}
       </div>
+      <br>
       <div class="modal-footer">
         <button class="btn btn-success" (click)="showUser(theuser.value,thepassword.value)">Enviar</button>
         <button class="btn btn-danger" (click) = "closeModal()">Close</button>
