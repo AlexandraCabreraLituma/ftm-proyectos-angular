@@ -1,6 +1,5 @@
-import {User} from './user';
-
 export class Project {
+  id?: string;
   title: string;
   description: string;
   key_words: string;
