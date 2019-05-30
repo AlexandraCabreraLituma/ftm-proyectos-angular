@@ -9,6 +9,7 @@ import {ProfileComponent} from './profile/profile.component';
 import {ProfileViewComponent} from './profile/profile-view.component';
 import {ProjectProfileComponent} from './project-profile/project-profile.component';
 import {NominationComponent} from './nomination/nomination.component';
+import {NominationViewComponent} from './nomination/nomination-view.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'profile-view', component: ProfileViewComponent },
   { path: 'project-profile', component: ProjectProfileComponent },
   { path: 'nomination', component: NominationComponent },
+  { path: 'nomination-view/:id', component: NominationViewComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 

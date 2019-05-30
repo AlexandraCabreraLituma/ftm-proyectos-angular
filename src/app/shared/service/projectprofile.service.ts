@@ -18,5 +18,8 @@ export class ProjectprofileService {
   readProyecProfiletByState(state: Boolean): Observable<ProjectProfileView[]> {
     return this.httpService.get(ApiEndpoint.PROJECTSPROFILE +  ApiEndpoint.STATES + '/' + state);
   }
+  readProyecProfiletByID(id: Number): Observable<ProjectProfileView> {
+    return this.httpService.get(ApiEndpoint.PROJECTSPROFILE + '/' + id);
+  }
 
 }
