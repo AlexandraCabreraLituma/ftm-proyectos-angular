@@ -1,0 +1,39 @@
+<div class="container" id="cardsInformacion">
+
+    <div class="card" *ngIf="validator">
+      <h1 class="w3-panel card-header bg-primary text-center" >{{datos.profile.name}}</h1>
+      <div class="card-body">
+        <div class="row vdivide">
+          <div class="col-sm-4 text-center">
+
+            <h6 class="card-subtitle mb-2 text-muted" >Working Day: {{datos.profile.working_day}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted" >Level: {{datos.profile.nivel}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted" >Initial Date: {{ datos.project.initial_date | date }} </h6>
+            <h6 class="card-subtitle mb-2 text-muted">Final Date:{{datos.project.initial_date | date }}</h6>
+          </div>
+          <div class="col-sm-7 text-left">
+            <h4 class="card-title">Description:{{datos.profile.description}}</h4>
+            <p class="card-text"></p>
+            <hr>
+            <h4 class="card-title">About Project</h4>
+            <h5 class="card-title">Title Project:</h5>
+            <p class="card-text">{{datos.project.title}}</p>
+            <h5 class="card-title">Description:</h5>
+            <p class="card-text">{{datos.project.description}}</p>
+            <h5 class="card-title">Key words:</h5>
+            <p class="card-text">{{datos.project.key_words}}</p>
+            <h5 class="card-title">Researcher:</h5>
+            <p class="card-text">{{user.firstname}} {{user.lastname}}
+              <button class="btn btn-link" (click)="openUser(user.id)">Click Here</button>
+            </p>
+            <h5 class="card-title text-danger" *ngIf="isLogin">Necesita iniciar seccion</h5>
+            <button class="btn btn-warning" [disabled]="isLogin">Postulate</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <br>
+    <br>
+
+</div>

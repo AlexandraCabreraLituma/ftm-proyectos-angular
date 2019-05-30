@@ -1,42 +1,44 @@
 import {Component, OnInit} from '@angular/core';
-import {PublicationService} from '../shared/service/publication.service';
 import {Publication} from '../shared/model/publication';
+import {UserMinimo} from '../shared/model/user-minimo';
+import {PublicationService} from '../shared/service/publication.service';
 import {UserService} from '../shared/service/user.service';
 import {User} from '../shared/model/user';
-import {UserMinimo} from '../shared/model/user-minimo';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'app-publication',
-  templateUrl: './publication.component.html'
+  selector: 'app-researcher',
+  templateUrl: './researcher.component.html',
+  styleUrls: ['./researcher.component.css']
 })
-export class PublicationComponent implements OnInit {
+export class ResearcherComponent implements OnInit {
+
   reservaList: Publication[] = [];
-  miStorage = window.sessionStorage;
-  username = '';
+  userID = '';
 
   data: UserMinimo = {username: '', email: '', orcid: '', firstname: '', lastname: '', address: '' , phone : null};
 
-  constructor(private publicationService: PublicationService, private  userService: UserService) {
-   // console.log(this.username);
+  constructor(private publicationService: PublicationService, private  userService: UserService, private routerActive: ActivatedRoute) {
+    // console.log(this.username);
     this.reservaList = [];
-    console.log(this.miStorage.getItem('username'));
+
   }
 
   ngOnInit() {
-    this.username = this.miStorage.getItem('username');
-    this.readRearchers(this.username);
+    this.userID = this.routerActive.snapshot.paramMap.get('id');
+    this.readRearchers(Number.parseInt(this.userID, 10));
 
   }
-  readRearchers(user) {
-    this.userService.getUserName(user).subscribe(
+  readRearchers(user: number) {
+    this.userService.getUserId(user).subscribe(
       (res: User) => {
-      //  console.log(res);
+        //  console.log(res);
         this.data = res['user'];
         console.log(this.data.orcid);
         this.publicationService.readAll(this.data.orcid).subscribe(
           (respuesta) => {
             this.reservaList = respuesta;
-          //  console.log(respuesta);
+            //  console.log(respuesta);
           },
           (error) => {
             console.log(error);
@@ -48,4 +50,5 @@ export class PublicationComponent implements OnInit {
       }
     );
   }
+
 }
