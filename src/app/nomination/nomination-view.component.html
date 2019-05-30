@@ -24,12 +24,10 @@
             <p class="card-text">{{datos.project.key_words}}</p>
             <h5 class="card-title">Researcher:</h5>
             <p class="card-text">{{user.firstname}} {{user.lastname}}
-              <br>
-              <button class="btn btn-info" (click)="openUser(user.id)">About Researcher</button>
+              <button class="btn btn-link" (click)="openUser(user.id)">Click Here</button>
             </p>
-
-
-            <button class="btn btn-warning">Postulate</button>
+            <h5 class="card-title text-danger" *ngIf="isLogin">Necesita iniciar seccion</h5>
+            <button class="btn btn-warning" [disabled]="isLogin">Postulate</button>
           </div>
         </div>
 

@@ -3,6 +3,7 @@ import {ProjectProfileView} from '../shared/model/projectsprofileView';
 import {ProjectprofileService} from '../shared/service/projectprofile.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../shared/model/user';
+import {HttpService} from '../shared/service/http.service';
 
 @Component({
   selector: 'app-nomination-view',
@@ -14,10 +15,22 @@ export class NominationViewComponent implements OnInit {
   private datos: ProjectProfileView;
   private user: User;
   private validator = false;
+  miStorage = window.sessionStorage;
   projectProfileID: string;
-  constructor(private projectprofileService: ProjectprofileService, private routerActive: ActivatedRoute, private router: Router) {
+  userid: string;
+  isLogin = true;
+  constructor(private projectprofileService: ProjectprofileService,
+              private routerActive: ActivatedRoute,
+              private router: Router,
+              private conex: HttpService) {
 
   //  console.log(this.projectProfileID);
+    this.conex.validatorLogin().subscribe(
+      (respuesta) => {
+        console.log(respuesta);
+        this.isLogin = false;
+      }
+    );
 
   }
 
@@ -37,8 +50,8 @@ export class NominationViewComponent implements OnInit {
       console.log('ERROR:', error.code);
     });
   }
-  openUser(user_name) {
-    this.router.navigate(['/researcher', user_name]);
+  openUser(user_id) {
+    this.router.navigate(['/researcher', user_id]);
 
   }
 }

@@ -10,14 +10,9 @@ import {Router} from '@angular/router';
 })
 export class NominationComponent implements OnInit {
 
-  userid: string;
-  miStorage = window.sessionStorage;
   data: ProjectProfileView[] = [];
   constructor( private router: Router, private projectprofileService: ProjectprofileService) {
- //   console.log(this.miStorage.getItem('userId'));
-    this.userid = this.miStorage.getItem('userId');
   }
-
 
   ngOnInit() {
     this.readProfileUser();
@@ -26,14 +21,12 @@ export class NominationComponent implements OnInit {
     this.projectprofileService.readProyecProfiletByState(true).subscribe
       (response => {
         this.data = response['projectsprofiles'];
-     //   console.log(response);
       }, error => {
         console.log('ERROR:', error);
       });
   }
   openProfile(profile_id) {
       this.router.navigate(['/nomination-view', profile_id]);
-
   }
 
 
