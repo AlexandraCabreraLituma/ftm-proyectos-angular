@@ -10,8 +10,8 @@
 
             <h6 class="card-subtitle mb-2 text-muted">Working Day: {{i.profile.working_day}}</h6>
             <h6 class="card-subtitle mb-2 text-muted">Level: {{i.profile.nivel}}</h6>
-            <h5 class="card-subtitle mb-2 text-muted">Initial Date:{{i.project.initial_date}}</h5>
-            <h5 class="card-subtitle mb-2 text-muted">Final Date:{{i.project.initial_date}}</h5>
+            <h5 class="card-subtitle mb-2 text-muted">Initial Date:{{i.project.initial_date | date }}</h5>
+            <h5 class="card-subtitle mb-2 text-muted">Final Date:{{i.project.initial_date | date }}</h5>
           </div>
           <div class="col-sm-7 text-left">
             <h4 class="card-title">Description:{{i.profile.description}}</h4>

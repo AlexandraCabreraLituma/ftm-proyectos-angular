@@ -8,16 +8,28 @@
 
             <h6 class="card-subtitle mb-2 text-muted" >Working Day: {{datos.profile.working_day}}</h6>
             <h6 class="card-subtitle mb-2 text-muted" >Level: {{datos.profile.nivel}}</h6>
-            <h5 class="card-subtitle mb-2 text-muted" >Initial Date:{{datos.project.initial_date}}</h5>
-            <h5 class="card-subtitle mb-2 text-muted">Final Date:{{datos.project.initial_date}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted" >Initial Date: {{ datos.project.initial_date | date }} </h6>
+            <h6 class="card-subtitle mb-2 text-muted">Final Date:{{datos.project.initial_date | date }}</h6>
           </div>
           <div class="col-sm-7 text-left">
             <h4 class="card-title">Description:{{datos.profile.description}}</h4>
             <p class="card-text"></p>
             <hr>
-            <h4 class="card-title">About Project:</h4>
+            <h4 class="card-title">About Project</h4>
+            <h5 class="card-title">Title Project:</h5>
             <p class="card-text">{{datos.project.title}}</p>
-            <button class="btn btn-info" >More Information</button>
+            <h5 class="card-title">Description:</h5>
+            <p class="card-text">{{datos.project.description}}</p>
+            <h5 class="card-title">Key words:</h5>
+            <p class="card-text">{{datos.project.key_words}}</p>
+            <h5 class="card-title">Researcher:</h5>
+            <p class="card-text">{{user.firstname}} {{user.lastname}}
+              <br>
+              <button class="btn btn-info" (click)="openUser(user.id)">About Researcher</button>
+            </p>
+
+
+            <button class="btn btn-warning">Postulate</button>
           </div>
         </div>
 
