@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {PublicationComponent} from './publication/publication.component';
 import {UserComponent} from './user/user.component';
@@ -8,6 +8,7 @@ import {ProjectViewComponent} from './project/project-view.component';
 import {ProfileComponent} from './profile/profile.component';
 import {ProfileViewComponent} from './profile/profile-view.component';
 import {ProjectProfileComponent} from './project-profile/project-profile.component';
+import {NominationComponent} from './nomination/nomination.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'profile-view', component: ProfileViewComponent },
   { path: 'project-profile', component: ProjectProfileComponent },
+  { path: 'nomination', component: NominationComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 

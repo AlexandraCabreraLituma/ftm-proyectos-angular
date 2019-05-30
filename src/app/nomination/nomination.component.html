@@ -1,0 +1,35 @@
+<div class="container" id="cardsInformacion">
+
+  <div *ngFor="let i of data" >
+
+    <div class="card">
+      <h1 class="w3-panel card-header bg-primary text-center">{{i.profile.name}}</h1>
+      <div class="card-body">
+        <div class="row vdivide">
+          <div class="col-sm-4 text-center">
+
+            <h6 class="card-subtitle mb-2 text-muted">Working Day: {{i.profile.working_day}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Level: {{i.profile.nivel}}</h6>
+            <h5 class="card-subtitle mb-2 text-muted">Initial Date:{{i.project.initial_date}}</h5>
+            <h5 class="card-subtitle mb-2 text-muted">Final Date:{{i.project.initial_date}}</h5>
+          </div>
+          <div class="col-sm-7 text-left">
+            <h4 class="card-title">Description:{{i.profile.description}}</h4>
+            <p class="card-text"></p>
+            <hr>
+            <h4 class="card-title">About Project:</h4>
+            <p class="card-text">{{i.project.title}}</p>
+            <button class="btn btn-info" (click)="openProfile(i.id)">More Information</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <br>
+    <br>
+
+
+
+  </div>
+
+</div>
