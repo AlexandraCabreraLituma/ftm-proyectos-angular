@@ -6,6 +6,7 @@ import {User} from '../shared/model/user';
 import {HttpService} from '../shared/service/http.service';
 import {Nomination} from '../shared/model/nomination';
 import {NominationService} from '../shared/service/nomination.service';
+import {until} from 'selenium-webdriver';
 
 @Component({
   selector: 'app-nomination-view',
@@ -30,18 +31,19 @@ export class NominationViewComponent implements OnInit {
               private conex: HttpService,
               private nominationService: NominationService) {
 
-  //  console.log(this.projectProfileID);
-    this.conex.validatorLogin().subscribe(
-      (respuesta) => {
-        console.log(respuesta);
-        this.isLogin = false;
-      }
-    );
+
 
   }
 
   ngOnInit() {
-    this.userid = Number.parseInt(this.miStorage.getItem('userId'), 10) ;
+    console.log(this.conex.showUserId());
+    if (this.conex.showUserId() !== null) {
+      this.isLogin = false;
+    }{
+      this.userid = Number.parseInt(this.conex.showUserId(), 10) ;
+    }
+
+  //  this.userid = Number.parseInt(this.miStorage.getItem('userId'), 10) ;
     this.projectProfileID = this.routerActive.snapshot.paramMap.get('id');
     this.readProjectProfileById();
   }
@@ -61,7 +63,7 @@ export class NominationViewComponent implements OnInit {
     this.router.navigate(['/researcher', user_id]);
   }
   add(project_profile_id: number) {
-    this.userid = Number.parseInt(this.miStorage.getItem('userId'), 10) ;
+    console.log('add' + this.userid);
 
     this.nomination = {
       project_profile_id: project_profile_id,
@@ -80,5 +82,7 @@ export class NominationViewComponent implements OnInit {
       console.log('ERROR:', error.code);
     });
   }
-
+  closeModal(){
+    this.isModal = false;
+  }
 }

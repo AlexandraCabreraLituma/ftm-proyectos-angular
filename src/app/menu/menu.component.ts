@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {UserService} from '../shared/service/user.service';
+import {Component, OnInit} from '@angular/core';
 import {HttpService} from '../shared/service/http.service';
 
 @Component({
@@ -15,7 +14,6 @@ export class MenuComponent implements OnInit {
   constructor(private conex: HttpService) {
     this.conex.validatorLogin().subscribe(
       (respuesta) => {
-        console.log(respuesta);
         this.isSeesion = true;
         this.notSeesion = false;
       }

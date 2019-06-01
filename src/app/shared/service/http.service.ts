@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Observable, Subject, throwError} from 'rxjs';
@@ -62,6 +62,8 @@ export class HttpService {
   }
   logout() {
     this.miStorage.removeItem('myToken');
+    this.miStorage.removeItem('userId');
+    this.miStorage.removeItem('username');
     this.isToken$.complete();
   }
 
