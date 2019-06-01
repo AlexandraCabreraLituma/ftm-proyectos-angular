@@ -35,15 +35,29 @@
     </div>
     <br>
     <br>
+  <div class="text-center form-horizontal alert alert-danger fade in" *ngIf="advertencia" >
+    <strong>Register exists</strong>
+  </div>
+  <div  class="alert alert-success alert-dismissible" *ngIf="isregistro" >
+    <strong>Congratulations!</strong> Register!!!
+    <br>
+  </div>
 
+</div>
 
-  <div id="registroExisto" >
-    <div  class="alert alert-success alert-dismissible" *ngIf="isregistro">
-      <strong>Congratulations!</strong> Register!!!
-      <br>
+<div id="myModal" class="modal" role="dialog" *ngIf="false">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Info</h4>
     </div>
-    <div *ngIf="advertencia" class="text-center form-horizontal alert alert-danger fade in" >
-      <strong>Register exists</strong>
+    <div class="modal-body">
+      <div  class="alert alert-success alert-dismissible" >
+        <strong>Congratulations!</strong> Register!!!
+        <br>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-default"  (click)="closeModal()">Close</button>
     </div>
   </div>
 </div>

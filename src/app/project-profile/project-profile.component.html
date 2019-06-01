@@ -3,7 +3,7 @@
   <div class="form-group">
     <label  class="cols-sm-2 control-label">Choose Proyect:</label>
     <div class="input-container">
-      <i class="fa fa-building icon"></i>
+      <i class="fa fa-building icons"></i>
       <select class="input-field"  formControlName="vproject"  [(ngModel)] = "project_id" (focus)="closewaring()"  [ngClass]="{ 'is-invalid': submitted && f.vproject.errors }">
         <ng-container *ngFor="let proye of proyects" >
           <option value= {{proye.id}}>{{proye.title}} </option>
@@ -17,7 +17,7 @@
   <div class="form-group">
     <label  class="cols-sm-2 control-label">Choose Profile:</label>
     <div class="input-container">
-      <i class="fa fa-graduation-cap icon"></i>
+      <i class="fa fa-graduation-cap icons"></i>
       <select class="input-field"  formControlName="vprofile"  [(ngModel)] = "profile_id"  [ngClass]="{ 'is-invalid': submitted && f.vprofile.errors }">
         <ng-container *ngFor="let prof of profiles" >
           <option value= {{prof.id}}>{{prof.name}} </option>

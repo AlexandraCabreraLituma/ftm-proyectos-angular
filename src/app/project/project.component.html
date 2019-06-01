@@ -4,7 +4,7 @@
   <div class="form-group">
     <label  class="cols-sm-2 control-label">title</label>
     <div class="input-container">
-      <i class="fa fa-university icon"></i>
+      <i class="fa fa-university icons"></i>
       <input type="text" formControlName="vtitle" [(ngModel)] = "title"   placeholder="Title"  class="input-field" [ngClass]="{ 'is-invalid': submitted && f.vtitle.errors }" />
     </div>
     <div *ngIf="submitted && f.vtitle.errors" class="form-horizontal alert alert-danger fade in">
@@ -15,7 +15,7 @@
   <div class="form-group">
     <label class="cols-sm-2 control-label">Description</label>
     <div class="input-container">
-      <i class="fa fa-book icon"></i>
+      <i class="fa fa-book icons"></i>
       ​<textarea id="txtArea" rows="5" cols="70" placeholder="Description"   formControlName="vdescription"  [(ngModel)] = "description" [ngClass]="{ 'is-invalid': submitted && f.vdescription.errors }"></textarea>
     </div>
     <div *ngIf="submitted && f.vdescription.errors" class="form-horizontal alert alert-danger fade in">
@@ -25,7 +25,7 @@
   <div class="form-group">
     <label  class="cols-sm-2 control-label">Key words</label>
     <div class="input-container">
-      <i class="fa fa-book icon"></i>
+      <i class="fa fa-book icons"></i>
       <input class="input-field" type="text" placeholder="Key words" formControlName="vkey_words" [(ngModel)] = "key_words" [ngClass]="{ 'is-invalid': submitted && f.vkey_words.errors}">
     </div>
     <div *ngIf="submitted && f.vkey_words.errors" class="form-horizontal alert alert-danger fade in">
@@ -36,7 +36,7 @@
   <div class="form-group">
     <label  class="cols-sm-2 control-label">Initial Date</label>
     <div class="input-container">
-      <i class="fa fa-calendar icon"></i>
+      <i class="fa fa-calendar icons"></i>
       <input class="input-field" type="date"  formControlName="vinitial_date"  [(ngModel)] = "initial_date" [ngClass]="{ 'is-invalid': submitted && f.vinitial_date.errors }"   >
     </div>
     <div *ngIf="submitted && f.vinitial_date.errors" class="form-horizontal alert alert-danger fade in">
@@ -48,7 +48,7 @@
   <div class="form-group">
     <label  class="cols-sm-2 control-label">Final Date</label>
     <div class="input-container">
-      <i class="fa fa-calendar icon"></i>
+      <i class="fa fa-calendar icons"></i>
       <input class="input-field" type="date"  formControlName="vfinal_date"  [(ngModel)] = "final_date" (focus)="closeFinalDate()" (blur)="comparate()" [ngClass]="{ 'is-invalid': submitted && f.vfinal_date.errors }"   >
     </div>
     <div *ngIf="submitted && f.vfinal_date.errors" class="form-horizontal alert alert-danger fade in">
