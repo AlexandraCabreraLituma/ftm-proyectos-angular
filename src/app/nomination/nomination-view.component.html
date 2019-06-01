@@ -27,7 +27,7 @@
               <button class="btn btn-link" (click)="openUser(user.id)">Click Here</button>
             </p>
             <h5 class="card-title text-danger" *ngIf="isLogin">Necesita iniciar seccion</h5>
-            <button class="btn btn-warning" [disabled]="isLogin">Postulate</button>
+            <button class="btn btn-warning" [disabled]="isLogin" (click)="add(datos.id)">Postulate</button>
           </div>
         </div>
 
@@ -36,4 +36,14 @@
     <br>
     <br>
 
+
+  <div id="registroExisto" >
+    <div  class="alert alert-success alert-dismissible" *ngIf="isregistro">
+      <strong>Congratulations!</strong> Register!!!
+      <br>
+    </div>
+    <div *ngIf="advertencia" class="text-center form-horizontal alert alert-danger fade in" >
+      <strong>Register exists</strong>
+    </div>
+  </div>
 </div>
