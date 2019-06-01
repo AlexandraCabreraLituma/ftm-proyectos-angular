@@ -4,6 +4,8 @@ import {ProjectprofileService} from '../shared/service/projectprofile.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../shared/model/user';
 import {HttpService} from '../shared/service/http.service';
+import {Nomination} from '../shared/model/nomination';
+import {NominationService} from '../shared/service/nomination.service';
 
 @Component({
   selector: 'app-nomination-view',
@@ -15,14 +17,18 @@ export class NominationViewComponent implements OnInit {
   private datos: ProjectProfileView;
   private user: User;
   private validator = false;
+  private isregistro = false;
+  private advertencia = false;
   miStorage = window.sessionStorage;
   projectProfileID: string;
-  userid: string;
+  nomination: Nomination;
+  userid: number;
   isLogin = true;
   constructor(private projectprofileService: ProjectprofileService,
               private routerActive: ActivatedRoute,
               private router: Router,
-              private conex: HttpService) {
+              private conex: HttpService,
+              private nominationService: NominationService) {
 
   //  console.log(this.projectProfileID);
     this.conex.validatorLogin().subscribe(
@@ -35,6 +41,7 @@ export class NominationViewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userid = Number.parseInt(this.miStorage.getItem('userId'), 10) ;
     this.projectProfileID = this.routerActive.snapshot.paramMap.get('id');
     this.readProjectProfileById();
   }
@@ -52,6 +59,26 @@ export class NominationViewComponent implements OnInit {
   }
   openUser(user_id) {
     this.router.navigate(['/researcher', user_id]);
-
   }
+  add(project_profile_id: number) {
+    this.userid = Number.parseInt(this.miStorage.getItem('userId'), 10) ;
+
+    this.nomination = {
+      project_profile_id: project_profile_id,
+      user_id: this.userid,
+    };
+
+    this.nominationService.saveNomination(this.nomination).subscribe(response => {
+      console.log('regsitro Correcto');
+      this.advertencia = false;
+      this.isregistro = true;
+    }, error => {
+      if (error.code === 409) {
+        this.advertencia = true;
+        this.isregistro = false;
+      }
+      console.log('ERROR:', error.code);
+    });
+  }
+
 }
