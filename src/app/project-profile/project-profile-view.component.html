@@ -1,0 +1,74 @@
+<div class="container" >
+  <div div class="col-sm-4 text-center">
+    <label  class="cols-sm-2 control-label">Choose Proyect:</label>
+    <div class="input-container">
+      <i class="fa fa-building icons"></i>
+        <select class="input-field" [(ngModel)] = "project_id">
+          <ng-container *ngFor="let proye of proyects" >
+            <option value= {{proye.id}}>{{proye.title}} </option>
+          </ng-container>
+        </select>
+    </div>
+  </div>
+  <div class="col-sm-4 text-center">
+    <label  class="cols-sm-2 control-label">Choose Profile:</label>
+    <div class="input-container">
+      <i class="fa fa-building icons"></i>
+        <select class="input-field"  [(ngModel)] = "profile_id" >
+          <ng-container *ngFor="let prof of profiles" >
+            <option value= {{prof.id}}>{{prof.name}} </option>
+          </ng-container>
+        </select>
+    </div>
+  </div>
+  <div class="col-sm-3 text-center">
+    <label  class="cols-sm-2 control-label">Choose Status:</label>
+    <br>
+    <input type="checkbox"  [(ngModel)]="state">Open
+
+  </div>
+  <div class="col-sm-1 text-center">
+    <button class="btn btn-lg btn-secondary" (click)="readSearch()" ><span class="glyphicon glyphicon-search"></span></button>
+  </div>
+</div>
+  <div class="container" id="cardsInformacion" *ngIf="isData">
+  <div *ngFor="let i of data" >
+
+    <div class="card">
+      <h1 class="w3-panel card-header bg-primary text-center ">{{i.profile.name}}
+        <i class="fa fa-pencil-square-o navbar-right w3-xlarge w3-padding"></i>
+        <i class="fa fa-trash-o navbar-right w3-xlarge w3-padding"></i>
+
+        <br>
+      </h1>
+      <div class="card-body">
+        <div class="row vdivide">
+          <div class="col-sm-4 text-center">
+            <i class="fa fa-check-circle-o fa-3x text-success" *ngIf="i.state" ></i>
+            <i class="fa fa-close fa-3x text-danger" *ngIf="!i.state" ></i>
+            <h6 class="card-subtitle mb-2 text-muted">Working Day: {{i.profile.working_day}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Level: {{i.profile.nivel}}</h6>
+            <h5 class="card-subtitle mb-2 text-muted">Initial Date:{{i.project.initial_date | date }}</h5>
+            <h5 class="card-subtitle mb-2 text-muted">Final Date:{{i.project.initial_date | date }}</h5>
+          </div>
+          <div class="col-sm-7 text-left">
+
+            <h4 class="card-title">Description:{{i.profile.description}}</h4>
+            <p class="card-text"></p>
+            <hr>
+            <h4 class="card-title">About Project:</h4>
+            <p class="card-text">{{i.project.title}}</p>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <br>
+    <br>
+
+
+
+  </div>
+
+</div>

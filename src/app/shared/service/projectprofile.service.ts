@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {ApiEndpoint} from '../api-endpoint.model';
 import {ProjectProfile} from '../model/projectprofile';
 import {ProjectProfileView} from '../model/projectsprofileView';
+import {ProjectProfileSearch} from '../model/projectProfileSearch';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,15 @@ export class ProjectprofileService {
   readProyecProfiletByID(id: Number): Observable<ProjectProfileView> {
     return this.httpService.get(ApiEndpoint.PROJECTSPROFILE + '/' + id);
   }
+  readProyecProfiletByProject(project_id: Number): Observable<ProjectProfileView[]> {
+    return this.httpService.get(ApiEndpoint.PROJECTSPROFILE + ApiEndpoint.PROJECTS + '/' + project_id);
+  }
+  readProyecProfiletByProfile(profile_id: Number): Observable<ProjectProfileView[]> {
+    return this.httpService.get(ApiEndpoint.PROJECTSPROFILE + ApiEndpoint.PROFILES + '/' + profile_id);
+  }
+  readProyecProfiletSearch(projectProfile: ProjectProfileSearch): Observable<ProjectProfileView[]> {
+    return this.httpService.post(ApiEndpoint.PROJECTSPROFILE + ApiEndpoint.SEARCH , JSON.stringify(projectProfile) );
+  }
+
 
 }

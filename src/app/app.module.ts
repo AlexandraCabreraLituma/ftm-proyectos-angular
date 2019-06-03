@@ -27,6 +27,7 @@ import {ProjectprofileService} from './shared/service/projectprofile.service';
 import {NominationComponent} from './nomination/nomination.component';
 import {NominationViewComponent} from './nomination/nomination-view.component';
 import {ResearcherComponent} from './researcher/researcher.component';
+import {ProjectProfileViewComponent} from './project-profile/project-profile-view.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {ResearcherComponent} from './researcher/researcher.component';
     ProjectProfileComponent,
     NominationComponent,
     NominationViewComponent,
-    ResearcherComponent
+    ResearcherComponent,
+    ProjectProfileViewComponent
   ],
   imports: [
     BrowserModule,
