@@ -3,7 +3,7 @@
     <label  class="cols-sm-2 control-label">Choose Proyect:</label>
     <div class="input-container">
       <i class="fa fa-building icons"></i>
-        <select class="input-field"   [(ngModel)] = "project_id" (change)="readProjectProfileByProyect()">
+        <select class="input-field" [(ngModel)] = "project_id">
           <ng-container *ngFor="let proye of proyects" >
             <option value= {{proye.id}}>{{proye.title}} </option>
           </ng-container>
@@ -14,7 +14,7 @@
     <label  class="cols-sm-2 control-label">Choose Profile:</label>
     <div class="input-container">
       <i class="fa fa-building icons"></i>
-        <select class="input-field"  [(ngModel)] = "profile_id" (change)="readProjectProfileByProfile()">
+        <select class="input-field"  [(ngModel)] = "profile_id" >
           <ng-container *ngFor="let prof of profiles" >
             <option value= {{prof.id}}>{{prof.name}} </option>
           </ng-container>
@@ -24,13 +24,11 @@
   <div class="col-sm-3 text-center">
     <label  class="cols-sm-2 control-label">Choose Status:</label>
     <br>
-    <label class="radio-inline"><input type="radio" name="optradio" checked>All</label>
-    <label class="radio-inline"><input type="radio" name="optradio">Open</label>
-    <label class="radio-inline"><input type="radio" name="optradio">Close</label>
+    <input type="checkbox"  [(ngModel)]="state">Open
 
   </div>
   <div class="col-sm-1 text-center">
-    <button class="btn btn-lg btn-secondary" ><span class="glyphicon glyphicon-search"></span></button>
+    <button class="btn btn-lg btn-secondary" (click)="readSearch()" ><span class="glyphicon glyphicon-search"></span></button>
   </div>
 </div>
   <div class="container" id="cardsInformacion" *ngIf="isData">

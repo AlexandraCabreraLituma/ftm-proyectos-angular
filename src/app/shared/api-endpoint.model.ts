@@ -12,4 +12,5 @@ export class ApiEndpoint {
   public static PROJECTSPROFILE = '/projectsProfiles';
   public static STATES = '/states';
   public static NOMINATIONS = '/nominations';
+  public static SEARCH = '/search';
 }
