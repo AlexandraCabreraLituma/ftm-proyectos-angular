@@ -21,5 +21,12 @@ export class ProjectprofileService {
   readProyecProfiletByID(id: Number): Observable<ProjectProfileView> {
     return this.httpService.get(ApiEndpoint.PROJECTSPROFILE + '/' + id);
   }
+  readProyecProfiletByProject(project_id: Number): Observable<ProjectProfileView> {
+    return this.httpService.get(ApiEndpoint.PROJECTSPROFILE + ApiEndpoint.PROJECTS + '/' + project_id);
+  }
+  readProyecProfiletByProfile(profile_id: Number): Observable<ProjectProfileView> {
+    return this.httpService.get(ApiEndpoint.PROJECTSPROFILE + ApiEndpoint.PROFILES + '/' + profile_id);
+  }
+
 
 }

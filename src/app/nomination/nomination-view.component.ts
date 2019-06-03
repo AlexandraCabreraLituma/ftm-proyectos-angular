@@ -6,7 +6,6 @@ import {User} from '../shared/model/user';
 import {HttpService} from '../shared/service/http.service';
 import {Nomination} from '../shared/model/nomination';
 import {NominationService} from '../shared/service/nomination.service';
-import {until} from 'selenium-webdriver';
 
 @Component({
   selector: 'app-nomination-view',
@@ -25,6 +24,8 @@ export class NominationViewComponent implements OnInit {
   nomination: Nomination;
   userid: number;
   isLogin = true;
+  isModal = false;
+
   constructor(private projectprofileService: ProjectprofileService,
               private routerActive: ActivatedRoute,
               private router: Router,
