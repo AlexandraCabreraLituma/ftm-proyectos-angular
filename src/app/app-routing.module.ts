@@ -12,6 +12,7 @@ import {NominationComponent} from './nomination/nomination.component';
 import {NominationViewComponent} from './nomination/nomination-view.component';
 import {ResearcherComponent} from './researcher/researcher.component';
 import {ProjectProfileViewComponent} from './project-profile/project-profile-view.component';
+import {UserNominationViewComponent} from './user/user-nomination-view.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'project-profile', component: ProjectProfileComponent },
   { path: 'project-profile-view', component: ProjectProfileViewComponent},
   { path: 'nomination', component: NominationComponent },
+  { path: 'user-nomination-view', component: UserNominationViewComponent },
   { path: 'nomination-view/:id', component: NominationViewComponent },
   { path: 'researcher/:id', component: ResearcherComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
