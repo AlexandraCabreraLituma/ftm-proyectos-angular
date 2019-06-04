@@ -140,7 +140,7 @@ hr {
   width:50%;
   height:60px;
 }
-
+.pointer {cursor: pointer;}
 /* custom checkbox */
 .checkbox {
   display: block;
