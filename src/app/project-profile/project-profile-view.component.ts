@@ -33,6 +33,7 @@ export class ProjectProfileViewComponent implements OnInit {
               private projectService: ProjectService,
               private projectProfileService: ProjectprofileService,
               private http: HttpService) {
+    this.state = true;
 
   }
   ngOnInit() {

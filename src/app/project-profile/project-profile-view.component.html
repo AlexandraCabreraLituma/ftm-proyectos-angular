@@ -21,14 +21,16 @@
         </select>
     </div>
   </div>
-  <div class="col-sm-3 text-center">
-    <label  class="cols-sm-2 control-label">Choose Status:</label>
-    <br>
-    <input type="checkbox"  [(ngModel)]="state">Open
-
+  <div class="col-sm-2">
+    <label  class="cols-sm-2 control-label">Status:</label>
+    <label class="checkbox">Open
+      <input type="checkbox" [(ngModel)]="state">
+      <span class="check"></span>
+    </label>
   </div>
+
   <div class="col-sm-1 text-center">
-    <button class="btn btn-lg btn-secondary" (click)="readSearch()" ><span class="glyphicon glyphicon-search"></span></button>
+    <button class="btn btn-lg btn-warning" (click)="readSearch()" ><span class="glyphicon glyphicon-search">Search</span></button>
   </div>
 </div>
   <div class="container" id="cardsInformacion" *ngIf="isData">
