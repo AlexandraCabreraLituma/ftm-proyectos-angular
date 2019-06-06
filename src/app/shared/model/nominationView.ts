@@ -2,7 +2,7 @@ import {User} from './user';
 import {ProjectProfileView} from './projectsprofileView';
 
 export class NominationView {
-  id?: string;
+  id?: number;
   projectprofile: ProjectProfileView;
   user: User;
   state?: string;

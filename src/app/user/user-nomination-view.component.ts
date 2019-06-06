@@ -17,6 +17,7 @@ export class UserNominationViewComponent implements OnInit {
   isData = false;
   isModalDelete = false;
   userid: string;
+  nominationId: string;
   constructor(private formBuilder: FormBuilder,
               private profileService: ProfileService,
               private projectService: ProjectService,
@@ -45,6 +46,15 @@ export class UserNominationViewComponent implements OnInit {
       this.isData = false;
     });
   }
+  deleteNomination(nominationID) {
+    console.log(nominationID);
+    this.nominationService.deleteNomination(nominationID).subscribe(response => {
+      this.closeModal();
+      this.readNominationUser();
 
+     }, error => {
+      console.log(error);
+    });
+  }
 
 }
