@@ -32,7 +32,7 @@ export class ProjectprofileService {
     return this.httpService.post(ApiEndpoint.PROJECTSPROFILE + ApiEndpoint.SEARCH , JSON.stringify(projectProfile) );
   }
   updateProjectProfile(projectProfile: ProjectProfile): Observable<ProjectProfile> {
-    return this.httpService.put(ApiEndpoint.PROJECTSPROFILE + '/' + projectProfile.id, projectProfile );
+     return this.httpService.put(ApiEndpoint.PROJECTSPROFILE + '/' + projectProfile.id, projectProfile );
   }
 
 }
