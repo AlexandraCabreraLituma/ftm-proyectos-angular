@@ -29,6 +29,7 @@ import {NominationViewComponent} from './nomination/nomination-view.component';
 import {ResearcherComponent} from './researcher/researcher.component';
 import {ProjectProfileViewComponent} from './project-profile/project-profile-view.component';
 import {UserNominationViewComponent} from './user/user-nomination-view.component';
+import {NominationCandidateViewComponent} from './nomination/nomination-candidate-view.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {UserNominationViewComponent} from './user/user-nomination-view.component
     NominationViewComponent,
     ResearcherComponent,
     ProjectProfileViewComponent,
-    UserNominationViewComponent
+    UserNominationViewComponent,
+    NominationCandidateViewComponent
   ],
   imports: [
     BrowserModule,

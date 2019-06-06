@@ -13,6 +13,7 @@ import {NominationViewComponent} from './nomination/nomination-view.component';
 import {ResearcherComponent} from './researcher/researcher.component';
 import {ProjectProfileViewComponent} from './project-profile/project-profile-view.component';
 import {UserNominationViewComponent} from './user/user-nomination-view.component';
+import {NominationCandidateViewComponent} from './nomination/nomination-candidate-view.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'user-nomination-view', component: UserNominationViewComponent },
   { path: 'nomination-view/:id', component: NominationViewComponent },
   { path: 'researcher/:id', component: ResearcherComponent },
+  { path: 'nomination-candidate-view/:id', component: NominationCandidateViewComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 

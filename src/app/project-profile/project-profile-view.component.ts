@@ -8,6 +8,7 @@ import {ProjectService} from '../shared/service/project.service';
 import {ProjectprofileService} from '../shared/service/projectprofile.service';
 import {HttpService} from '../shared/service/http.service';
 import {ProjectProfileSearch} from '../shared/model/projectProfileSearch';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-project-profile-view',
@@ -32,7 +33,9 @@ export class ProjectProfileViewComponent implements OnInit {
               private profileService: ProfileService,
               private projectService: ProjectService,
               private projectProfileService: ProjectprofileService,
-              private http: HttpService) {
+              private http: HttpService,
+              private routerActive: ActivatedRoute,
+              private router: Router) {
     this.state = true;
 
   }
@@ -82,5 +85,10 @@ export class ProjectProfileViewComponent implements OnInit {
     }, error => {
         this.isData = false;
     });
+  }
+
+  openNomination(project_profile_id) {
+  //  console.log(project_profile_id);
+    this.router.navigate(['/nomination-candidate-view', project_profile_id]);
   }
 }

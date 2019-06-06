@@ -31,6 +31,8 @@ export class ProjectprofileService {
   readProyecProfiletSearch(projectProfile: ProjectProfileSearch): Observable<ProjectProfileView[]> {
     return this.httpService.post(ApiEndpoint.PROJECTSPROFILE + ApiEndpoint.SEARCH , JSON.stringify(projectProfile) );
   }
-
+  updateProjectProfile(projectProfile: ProjectProfile): Observable<ProjectProfile> {
+    return this.httpService.put(ApiEndpoint.PROJECTSPROFILE + '/' + projectProfile.id, projectProfile );
+  }
 
 }
