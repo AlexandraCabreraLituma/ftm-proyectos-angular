@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NominationView} from '../shared/model/nominationView';
 import {FormBuilder} from '@angular/forms';
-import {ProfileService} from '../shared/service/profile.service';
-import {ProjectService} from '../shared/service/project.service';
 import {ProjectprofileService} from '../shared/service/projectprofile.service';
 import {NominationService} from '../shared/service/nomination.service';
 import {HttpService} from '../shared/service/http.service';
@@ -26,11 +24,8 @@ export class NominationCandidateViewComponent implements OnInit {
   rejected = States.REJECTED;
   accepted = States.ACCEPTED;
 
-  isModalDelete = false;
   project_profile_id: string;
   constructor(private formBuilder: FormBuilder,
-              private profileService: ProfileService,
-              private projectService: ProjectService,
               private projectProfileService: ProjectprofileService,
               private nominationService: NominationService,
               private http: HttpService,
