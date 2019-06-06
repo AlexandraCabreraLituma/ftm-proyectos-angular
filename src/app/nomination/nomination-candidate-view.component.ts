@@ -50,30 +50,26 @@ export class NominationCandidateViewComponent implements OnInit {
     this.nomination.user_id = user;
     this.nomination.project_profile_id = projectprofile;
     this.nomination.state = state;
-    console.log(this.nomination);
     this.nominationService.updateNomination(this.nomination).subscribe(response => {
-      console.log(response);
+
+      if (this.accepted === this.nomination.state) {
+        this.updateProjectProfile(this.nomination.project_profile_id);
+      }
       this.readNominationBYProjectProfileID(Number.parseInt(this.project_profile_id, 10));
 
     }, error => {
       console.log(error);
     });
 
-    if (this.accepted === this.nomination.state) {
-      console.log('aceptado');
-      this.updateProjectProfile(this.nomination.project_profile_id);
-    }
   }
-  updateProjectProfile(project_profile_id) {
-    console.log('empieza');
+  updateProjectProfile(project_profile_id){
     this.projectProfileService.readProyecProfiletByID(project_profile_id).subscribe(
       (res: ProjectProfileView) => {
         this.projecProfileView = res['projectprofile'];
-        console.log(this.projecProfileView.profile);
-        this.projecProfile.id=this.projecProfileView.id;
-        this.projecProfile.project_id=this.projecProfileView.project.id;
-        this.projecProfile.profile_id=this.projecProfileView.profile.id;
-        this.projecProfile.state=false;
+        this.projecProfile.id = this.projecProfileView.id;
+        this.projecProfile.project_id = this.projecProfileView.project.id;
+        this.projecProfile.profile_id = this.projecProfileView.profile.id;
+        this.projecProfile.state = false;
         this.projectProfileService.updateProjectProfile(this.projecProfile).subscribe(response => {
         }, error => {
           console.log(error);
@@ -83,23 +79,13 @@ export class NominationCandidateViewComponent implements OnInit {
         console.log(error);
       }
     );
-    // this.readProjectProfileById(project_profile_id);
-
-    /*
-    this.projectProfileService.updateProjectProfile(this.projecProfile).subscribe(response => {
-    }, error => {
-      console.log(error);
-    });*/
-
   }
-
 
   openUser(user_id) {
     this.router.navigate(['/researcher', user_id]);
   }
   readNominationBYProjectProfileID(project_profile_id) {
     this.nominationService.readNominationByProjectProfileID(project_profile_id).subscribe(response => {
-    ///  console.log(response);
       this.isData = true;
       this.datos = response['nominations'];
 
