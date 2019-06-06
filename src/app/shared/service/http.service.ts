@@ -45,6 +45,14 @@ export class HttpService {
       })
     );
   }
+  put(endpoint: string, body?: Object): Observable<any> {
+    return this.http.put(HttpService.API_END_POINT + endpoint, body, this.createOptions()).pipe(
+      map(response => this.extractData(response)
+      ), catchError(error => {
+        return this.handleError(error);
+      })
+    );
+  }
 
   login(endPoint: string, user: Object): Observable<any> {
     return this.http.post(HttpService.API_END_POINT + endPoint, user, this.createOptions()).pipe(

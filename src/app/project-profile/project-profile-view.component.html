@@ -60,7 +60,9 @@
             <hr>
             <h4 class="card-title">About Project:</h4>
             <p class="card-text">{{i.project.title}}</p>
-
+            <div class="col-sm-1 text-center">
+              <button class="btn btn-lg btn-warning" (click)="openNomination(i.id)" ><span class="glyphicon glyphicon-search">Nominations</span></button>
+            </div>
           </div>
         </div>
 

@@ -1,5 +1,5 @@
 export class ProjectProfile {
-  id?: string;
+  id?: number;
   project_id: number;
   profile_id: number;
   state?: boolean;
