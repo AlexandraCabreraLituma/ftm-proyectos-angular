@@ -25,4 +25,7 @@ export class NominationService {
   updateNomination(nomination: Nomination): Observable<Nomination> {
     return this.httpService.put(ApiEndpoint.NOMINATIONS + '/' + nomination.id, nomination );
   }
+  deleteNomination(nominationid: number): Observable<Nomination> {
+    return this.httpService.delete(ApiEndpoint.NOMINATIONS + '/' + (nominationid));
+  }
 }

@@ -53,6 +53,14 @@ export class HttpService {
       })
     );
   }
+  delete(endpoint: string): Observable<any> {
+    return this.http.delete(HttpService.API_END_POINT + endpoint, this.createOptions()).pipe(
+      map(response => this.extractData(response)
+      ), catchError(error => {
+        return this.handleError(error);
+      })
+    );
+  }
 
   login(endPoint: string, user: Object): Observable<any> {
     return this.http.post(HttpService.API_END_POINT + endPoint, user, this.createOptions()).pipe(
