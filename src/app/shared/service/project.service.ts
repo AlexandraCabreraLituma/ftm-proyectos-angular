@@ -1,6 +1,5 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpService} from './http.service';
-import {User} from '../model/user';
 import {Observable} from 'rxjs';
 import {ApiEndpoint} from '../api-endpoint.model';
 import {Project} from '../model/project';
@@ -21,6 +20,9 @@ export class ProjectService {
   }
   readProyectByUserEnabled(userid: number): Observable<Project[]> {
     return this.httpService.get(ApiEndpoint.PROJECTS + ApiEndpoint.USERS + ApiEndpoint.ENABLED + '/' + userid);
+  }
+  updateProject(project: Project): Observable<Project> {
+    return this.httpService.put(ApiEndpoint.PROJECTS+ '/' + project.id, project );
   }
 
 }

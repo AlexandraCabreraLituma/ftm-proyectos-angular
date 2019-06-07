@@ -11,7 +11,11 @@
   <div *ngFor="let i of data" >
 
       <div class="card">
-        <h1 class="w3-panel card-header bg-primary text-center">{{i.title}}</h1>
+        <h1 class="w3-panel card-header bg-primary text-center"  >{{i.title}}
+          <i class="fa fa-close navbar-right w3-xlarge w3-padding pointer text-danger" (click)="updateProject(i.id,i.title,i.description,i.key_words,i.initial_date,i.final_date,false)" ></i>
+          <i class="fa fa-check-circle-o navbar-right w3-xlarge w3-padding pointer text-success"  (click)="updateProject(i.id,i.title,i.description,i.key_words,i.initial_date,i.final_date,true)"></i>
+
+        </h1>
         <div class="card-body">
           <div class="row vdivide">
             <div class="col-sm-4 text-center">
