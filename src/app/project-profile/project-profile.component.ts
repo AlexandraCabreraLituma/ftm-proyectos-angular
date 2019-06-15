@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Profile} from '../shared/model/profile';
-import {User} from '../shared/model/user';
 import {ProfileService} from '../shared/service/profile.service';
 import {HttpService} from '../shared/service/http.service';
 import {Project} from '../shared/model/project';
@@ -66,7 +65,7 @@ export class ProjectProfileComponent implements OnInit {
     );
   }
   readProjectUser() {
-    this.projectService.readProyectByUser(Number.parseInt(this.userid, 10)).subscribe(
+    this.projectService.readProyectByUserEnabled(Number.parseInt(this.userid, 10)).subscribe(
       projects => this.proyects = projects['projects']
     );
   }
