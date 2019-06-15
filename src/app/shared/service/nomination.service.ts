@@ -21,6 +21,9 @@ export class NominationService {
   readNominationByProjectProfileID(project_profile_id: number): Observable<NominationView[]> {
     return this.httpService.get(ApiEndpoint.NOMINATIONS +  ApiEndpoint.PROJECTSPROFILE + '/' + project_profile_id);
   }
+  readNominationUserProjectProfileID(userid: number, project_profile_id: number): Observable<NominationView[]> {
+    return this.httpService.get(ApiEndpoint.NOMINATIONS + ApiEndpoint.USERS + '/' + userid +  ApiEndpoint.PROJECTSPROFILE + '/' + project_profile_id);
+  }
 
   updateNomination(nomination: Nomination): Observable<Nomination> {
     return this.httpService.put(ApiEndpoint.NOMINATIONS + '/' + nomination.id, nomination );
