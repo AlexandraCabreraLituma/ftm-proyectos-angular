@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Project} from '../shared/model/project';
 import {User} from '../shared/model/user';
-import {ProjectService} from '../shared/service/project.service';
 import {HttpService} from '../shared/service/http.service';
 import {Profile} from '../shared/model/profile';
 import {ProfileService} from '../shared/service/profile.service';
@@ -25,7 +23,7 @@ export class ProfileComponent implements OnInit {
   userid: string;
   user: User;
   private isregistro = false;
-  private isformulario = true;
+
   working_days = ['Full time', 'Part time', 'Others'];
   nivels = ['Junior', 'Senior', 'Master'];
   constructor(private formBuilder: FormBuilder,
@@ -68,10 +66,8 @@ export class ProfileComponent implements OnInit {
     this.profileService.saveProfile(this.profile).subscribe(response => {
       console.log('regsitro Correcto');
       this.isregistro = true;
-      this.isformulario = false;
     }, error => {
       this.isregistro = false;
-      this.isformulario = true;
       console.log('ERROR:', error);
     });
   }

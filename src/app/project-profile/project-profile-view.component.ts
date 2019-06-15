@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectProfileView} from '../shared/model/projectsprofileView';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import {Profile} from '../shared/model/profile';
 import {Project} from '../shared/model/project';
 import {ProfileService} from '../shared/service/profile.service';
 import {ProjectService} from '../shared/service/project.service';
@@ -9,6 +7,8 @@ import {ProjectprofileService} from '../shared/service/projectprofile.service';
 import {HttpService} from '../shared/service/http.service';
 import {ProjectProfileSearch} from '../shared/model/projectProfileSearch';
 import {ActivatedRoute, Router} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ProfileMinimo} from '../shared/model/profile-minimo';
 
 @Component({
   selector: 'app-project-profile-view',
@@ -17,16 +17,15 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class ProjectProfileViewComponent implements OnInit {
   data: ProjectProfileView[] = [];
-  private registerProjectProfileForm: FormGroup;
+  searchProjectProfileForm: FormGroup;
   isData = false;
-  private submitted = false;
+  submitted = false;
   private project_id: string;
   private profile_id: string;
-  private advertencia = false;
   userid: string;
   projectProfile: ProjectProfileSearch;
-  private isregistro = false;
-  profiles: Profile[] = [];
+  profileInitial: ProfileMinimo = {id: null , name: 'All Profile'} ;
+  profiles: ProfileMinimo[] = [];
   proyects: Project[] = [];
   state: true;
   constructor(private formBuilder: FormBuilder,
@@ -37,21 +36,41 @@ export class ProjectProfileViewComponent implements OnInit {
               private routerActive: ActivatedRoute,
               private router: Router) {
     this.state = true;
+    this.userid = this.http.showUserId();
+    this.readProfileUser();
+    this.readProjectUser();
+   // this.profiles.push(this.profileInitial);
 
   }
   ngOnInit() {
-    this.userid = this.http.showUserId();
-    this.readProjectUser();
-    this.readProfileUser();
+
+
+    this.searchProjectProfileForm = this.formBuilder.group({
+      vprojects: ['', [Validators.required]],
+      vprofiles: [''],
+      vstate: ['']
+    });
+   // console.log(this.profiles[0]['name']);
+  }
+  get f() {
+    return this.searchProjectProfileForm.controls;
   }
   readProfileUser() {
+
     this.profileService.readProfileByUser(Number.parseInt(this.userid, 10)).subscribe(
-      projects => this.profiles = projects['profiles']
+      projects => {
+        this.profiles = projects['profiles'];
+        this.profiles.push(this.profileInitial);
+        this.profiles.reverse();
+      }
     );
   }
   readProjectUser() {
     this.projectService.readProyectByUser(Number.parseInt(this.userid, 10)).subscribe(
-      projects => this.proyects = projects['projects']
+      projects => {
+        this.proyects = projects['projects'];
+        //this.proyects.push()
+      }
     );
   }
   readProjectProfileByProyect() {
@@ -73,18 +92,24 @@ export class ProjectProfileViewComponent implements OnInit {
     });
   }
   readSearch() {
-    this.projectProfile = {
-      project_id: this.project_id == null ? '' : this.project_id,
-      profile_id: this.profile_id == null ? '' : this.profile_id,
-      state: this.state
-    };
+    this.submitted = true;
+    if (this.searchProjectProfileForm.invalid) {
+      console.log("datos invalidos");
+      return;
+    } else {
+      this.projectProfile = {
+        project_id: this.project_id == null ? '' : this.project_id,
+        profile_id: this.profile_id == null ? '' : this.profile_id,
+        state: this.state
+      };
 
-    this.projectProfileService.readProyecProfiletSearch(this.projectProfile).subscribe(response => {
-      this.data = response['projectsprofiles']
-      this.isData = true;
-    }, error => {
+      this.projectProfileService.readProyecProfiletSearch(this.projectProfile).subscribe(response => {
+        this.data = response['projectsprofiles']
+        this.isData = true;
+      }, error => {
         this.isData = false;
-    });
+      });
+    }
   }
 
   openNomination(project_profile_id) {

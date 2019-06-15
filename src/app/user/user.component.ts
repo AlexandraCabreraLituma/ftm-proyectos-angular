@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User} from '../shared/model/user';
 import {UserService} from '../shared/service/user.service';
 import {Router} from '@angular/router';
@@ -152,10 +152,9 @@ export class UserComponent implements OnInit {
     this.userService.saveUser(this.user).subscribe(response => {
       console.log('regsitro Correcto');
       this.isregistro = true;
-      this.isformulario = false;
+
     }, error => {
       this.isregistro = false;
-      this.isformulario = true;
       console.log('ERROR:', error);
     });
   }

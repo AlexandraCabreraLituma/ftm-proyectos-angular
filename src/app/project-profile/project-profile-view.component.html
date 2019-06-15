@@ -1,46 +1,58 @@
+<form [formGroup]="searchProjectProfileForm" (ngSubmit)="readSearch()">
+
 <div class="container" >
   <div div class="col-sm-4 text-center">
     <label  class="cols-sm-2 control-label">Choose Proyect:</label>
     <div class="input-container">
       <i class="fa fa-building icons"></i>
-        <select class="input-field" [(ngModel)] = "project_id">
+      <select class="input-field"  formControlName="vprojects"  [(ngModel)] = "project_id" [ngClass]="{ 'is-invalid': submitted && f.vprojects.errors }">
           <ng-container *ngFor="let proye of proyects" >
             <option value= {{proye.id}}>{{proye.title}} </option>
           </ng-container>
         </select>
     </div>
+    <div *ngIf="submitted && f.vprojects.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vprojects.errors.required">Project is required</div>
+    </div>
   </div>
+
   <div class="col-sm-4 text-center">
     <label  class="cols-sm-2 control-label">Choose Profile:</label>
     <div class="input-container">
       <i class="fa fa-building icons"></i>
-        <select class="input-field"  [(ngModel)] = "profile_id" >
+        <select class="input-field"  [(ngModel)] = "profile_id"  formControlName="vprofiles" [ngClass]="{ 'is-invalid': submitted && f.vprofiles.errors }">
           <ng-container *ngFor="let prof of profiles" >
             <option value= {{prof.id}}>{{prof.name}} </option>
           </ng-container>
         </select>
     </div>
+    <div *ngIf="submitted && f.vprofiles.errors" class="form-horizontal alert alert-danger fade in">
+      <div *ngIf="f.vprofiles.errors.required">Profile is required</div>
+    </div>
   </div>
   <div class="col-sm-2">
-    <label  class="cols-sm-2 control-label">Status:</label>
+
     <label class="checkbox">Open
-      <input type="checkbox" [(ngModel)]="state">
+      <input type="checkbox" [(ngModel)]="state" formControlName="vstate">
       <span class="check"></span>
     </label>
   </div>
 
   <div class="col-sm-1 text-center">
-    <button class="btn btn-lg btn-warning" (click)="readSearch()" ><span class="glyphicon glyphicon-search">Search</span></button>
+    <button class="btn btn-lg btn-warning"  ><span class="glyphicon glyphicon-search">Search</span></button>
   </div>
 </div>
+</form>
+
   <div class="container" id="cardsInformacion" *ngIf="isData">
   <div *ngFor="let i of data" >
 
     <div class="card">
       <h1 class="w3-panel card-header bg-primary text-center ">{{i.profile.name}}
+       <!--
         <i class="fa fa-pencil-square-o navbar-right w3-xlarge w3-padding"></i>
         <i class="fa fa-trash-o navbar-right w3-xlarge w3-padding"></i>
-
+      -->
         <br>
       </h1>
       <div class="card-body">

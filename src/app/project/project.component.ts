@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User} from '../shared/model/user';
-import {UserService} from '../shared/service/user.service';
-import {Router} from '@angular/router';
 import {Project} from '../shared/model/project';
 import {HttpService} from '../shared/service/http.service';
 import {ProjectService} from '../shared/service/project.service';
+
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
@@ -25,13 +24,12 @@ export class ProjectComponent implements OnInit {
   userid: string;
   user: User;
   private isregistro = false;
-  private isformulario = true;
-  categories = ["Inteligencia artificial", "Ingeniería aeronáutica ", "Meteorología","OTROS"];
+
   constructor(private formBuilder: FormBuilder,
               private projectService: ProjectService,
               private http: HttpService) {
 
-    //  this.homeUrl = data.homeUrl;
+
   }
 
 
@@ -84,11 +82,8 @@ export class ProjectComponent implements OnInit {
     this.projectService.saveProject(this.project).subscribe(response => {
       console.log('regsitro Correcto');
       this.isregistro = true;
-      this.isformulario = false;
-    }, error => {
+     }, error => {
       this.isregistro = false;
-      this.isformulario = true;
-      console.log('ERROR:', error);
     });
   }
 

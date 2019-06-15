@@ -1,10 +1,10 @@
-<form id="registro" [formGroup]="registerForm" (ngSubmit)="onSubmit()" *ngIf="isformulario" >
+<form id="registro" [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
   <h2>Register User</h2>
 
   <div class="form-group">
     <label  class="cols-sm-2 control-label">UserName</label>
     <div class="input-container">
-      <i class="fa fa-user icon"></i>
+      <i class="fa fa-user icons"></i>
       <input type="text" formControlName="vuserName" [(ngModel)] = "username"  (blur)="showUserName()" (focus)="closeAdvertenciaUserName()"  placeholder="Identificación de Usuario"  class="input-field" [ngClass]="{ 'is-invalid': submitted && f.vuserName.errors }" />
     </div>
     <div *ngIf="submitted && f.vuserName.errors" class="form-horizontal alert alert-danger fade in">
