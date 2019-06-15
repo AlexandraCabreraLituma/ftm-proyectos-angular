@@ -80,7 +80,7 @@ export class HttpService {
     this.miStorage.removeItem('myToken');
     this.miStorage.removeItem('userId');
     this.miStorage.removeItem('username');
-    this.isToken$.complete();
+   // this.isToken$.complete();
   }
 
   private extractData(response, user?): any {

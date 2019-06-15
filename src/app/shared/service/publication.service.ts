@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpApiOrcidService} from './http-api-orcid.service';
 import {Observable} from 'rxjs';
 import {Publication} from '../model/publication';
 import {ApiEndpoint} from '../api-endpoint.model';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 
 
@@ -15,16 +14,21 @@ interface ObjRespone {
 })
 export class PublicationService {
   publicationList: Publication[] = [];
-  constructor(private httpService: HttpApiOrcidService) { }
+  constructor(private httpService: HttpApiOrcidService) {
+    this.publicationList = [];
+  }
 
   readAll(corid): Observable<any> {
-
-    return this.httpService.get(corid, ApiEndpoint.WORKS).pipe(
-      map( x => {
-        this.clean(x.group)
-        return this.publicationList ;
-      })
-    );
+      return this.httpService.get(corid, ApiEndpoint.WORKS).pipe(
+        map( x => {
+          if (this.publicationList.length <= 0 ) {
+            this.clean(x.group);
+            return this.publicationList ;
+          } else {
+            return this.publicationList ;
+          }
+        })
+      );
   }
 
   clean(res: any) {

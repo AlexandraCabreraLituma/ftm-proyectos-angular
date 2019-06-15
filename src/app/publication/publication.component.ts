@@ -24,7 +24,10 @@ export class PublicationComponent implements OnInit {
 
   ngOnInit() {
     this.username = this.miStorage.getItem('username');
-    this.readRearchers(this.username);
+    if (this.reservaList.length <= 0) {
+      this.readRearchers(this.username);
+    }
+
 
   }
   readRearchers(user) {
