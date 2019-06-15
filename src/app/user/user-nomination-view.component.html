@@ -6,7 +6,7 @@
 
     <div class="card">
       <h1 class="w3-panel card-header bg-primary text-center ">{{i.projectprofile.profile.name}}
-        <i class="fa fa-trash-o navbar-right w3-xlarge w3-padding pointer" (click)="openModal()"></i>
+        <i class="fa fa-trash-o navbar-right w3-xlarge w3-padding pointer" (click)="openModal(i.state)"></i>
 
         <br>
       </h1>
@@ -30,13 +30,13 @@
     <div id="myModal" class="modal modal-sm" role="dialog" *ngIf="isModalDelete">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Confirmation</h4>
+          <h4 class="modal-title">{{titleModal}}</h4>
         </div>
         <div class="modal-body text-center">
-          <strong  class="text-danger ">Do you want to delete your nomination?</strong>
+          <strong  class="text-danger ">{{msgModal}}</strong>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-success" (click)="deleteNomination(i.id)" >Send</button>
+          <button class="btn btn-success" *ngIf="isModalDeletePostulated" (click)="deleteNomination(i.id)" >Send</button>
           <button class="btn btn-danger" (click)="closeModal()">Close</button>
         </div>
       </div>

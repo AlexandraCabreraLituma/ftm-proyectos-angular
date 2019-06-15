@@ -18,6 +18,9 @@ export class UserNominationViewComponent implements OnInit {
   isModalDelete = false;
   userid: string;
   nominationId: string;
+  titleModal: string;
+  msgModal: string;
+  isModalDeletePostulated = false;
   constructor(private formBuilder: FormBuilder,
               private profileService: ProfileService,
               private projectService: ProjectService,
@@ -33,7 +36,17 @@ export class UserNominationViewComponent implements OnInit {
   closeModal(){
     this.isModalDelete = false;
   }
-  openModal(){
+  openModal(state: string) {
+    console.log(state);
+    if (state == 'postulated') {
+      this.titleModal = 'Confirmation';
+      this.msgModal = 'Do you want to delete your nomination?';
+      this.isModalDeletePostulated = true;
+   } else {
+      this.titleModal = 'Error';
+      this.msgModal = 'State is not postulated';
+      this.isModalDeletePostulated = false;
+    }
     this.isModalDelete = true;
   }
   readNominationUser() {
