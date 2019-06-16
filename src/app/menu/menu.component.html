@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" >Nearby Project</a>
@@ -47,7 +47,7 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="notSeesion" ><a routerLink="user" ><span class="glyphicon glyphicon-user"></span> Registro</a></li>
+        <li *ngIf="notSeesion" ><a routerLink="user" ><span class="glyphicon glyphicon-user"></span> Register</a></li>
         <li *ngIf="notSeesion" ><a id="login"  (click)="showmodal()"><span id="iconLogin" class="glyphicon glyphicon-log-in"></span>login</a></li>
         <li *ngIf="isSeesion" (click)="logout()"><a routerLink="home" ><span class="glyphicon glyphicon-log-out"></span>logout</a></li>
       </ul>

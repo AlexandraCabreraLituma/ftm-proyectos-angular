@@ -26,7 +26,7 @@
             <p class="card-text">{{user.firstname}} {{user.lastname}}
               <button class="btn btn-link" (click)="openUser(user.id)">Click Here</button>
             </p>
-            <h5 class="card-title text-danger" *ngIf="isLogin">Necesita iniciar seccion</h5>
+            <h5 class="card-title text-danger" *ngIf="isLogin">{{msgTitle}}</h5>
             <button class="btn btn-warning" [disabled]="isLogin" (click)="add(datos.id)">Postulate</button>
           </div>
         </div>

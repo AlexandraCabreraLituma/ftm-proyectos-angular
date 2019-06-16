@@ -25,7 +25,7 @@ export class NominationViewComponent implements OnInit {
   userid: number;
   isLogin = true;
   isModal = false;
-
+  msgTitle: String;
   constructor(private projectprofileService: ProjectprofileService,
               private routerActive: ActivatedRoute,
               private router: Router,
@@ -33,7 +33,7 @@ export class NominationViewComponent implements OnInit {
               private nominationService: NominationService) {
 
 
-
+    this.msgTitle = 'You need to start session';
   }
 
   ngOnInit() {
@@ -44,9 +44,9 @@ export class NominationViewComponent implements OnInit {
       this.userid = Number.parseInt(this.conex.showUserId(), 10) ;
     }
 
-  //  this.userid = Number.parseInt(this.miStorage.getItem('userId'), 10) ;
-    this.projectProfileID = this.routerActive.snapshot.paramMap.get('id');
+     this.projectProfileID = this.routerActive.snapshot.paramMap.get('id');
     this.readProjectProfileById();
+    this.readNominationUserProjectProfile();
   }
 
   readProjectProfileById() {
@@ -56,6 +56,21 @@ export class NominationViewComponent implements OnInit {
       this.datos = response['projectprofile'];
       this.user = response['projectprofile']['project']['user'];
      // console.log(response['projectprofile']['project']['user']);
+    }, error => {
+      console.log('ERROR:', error.code);
+    });
+  }
+  readNominationUserProjectProfile() {
+    this.nominationService.readNominationUserProjectProfileID(
+                            this.userid,
+                            Number.parseInt(this.projectProfileID, 10)).subscribe
+    (response  => {
+         // console.log('existe un registro')
+        //  console.log(response);
+          this.isLogin = true;
+          this.msgTitle = 'You have a postulated';
+
+      // console.log(response['projectprofile']['project']['user']);
     }, error => {
       console.log('ERROR:', error.code);
     });
@@ -75,6 +90,8 @@ export class NominationViewComponent implements OnInit {
       console.log('regsitro Correcto');
       this.advertencia = false;
       this.isregistro = true;
+      this.isLogin = true;
+      this.msgTitle = '';
     }, error => {
       if (error.code === 409) {
         this.advertencia = true;

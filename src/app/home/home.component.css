@@ -1,3 +1,6 @@
 #home,#paper{
   cursor: pointer;
 }
+.item{
+  width: 100%;
+}
