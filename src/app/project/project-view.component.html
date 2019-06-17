@@ -1,7 +1,7 @@
 <div class="container">
   <div class="btn-group container" role="group">
     <button class="btn btn-lg btn-secondary" (click)="readProjectUser()"><span class="glyphicon glyphicon-search"></span> All</button>
-  <button class="btn btn-lg btn-secondary" (click)="readProyectUserEnabled()"><span class="fa fa-check-circle-o text-success"></span> Enabled</button>
+  <button class="btn btn-lg btn-secondary" (click)="readProyectUserEnabled()"><span class="fa fa-unlock text-success"></span> Enabled</button>
   </div>
 </div>
 <br>
@@ -12,15 +12,15 @@
 
       <div class="card">
         <h1 class="w3-panel card-header bg-primary text-center"  >{{i.title}}
-          <i class="fa fa-close navbar-right w3-xlarge w3-padding pointer text-danger" (click)="updateProject(i.id,i.title,i.description,i.key_words,i.initial_date,i.final_date,false)" ></i>
-          <i class="fa fa-check-circle-o navbar-right w3-xlarge w3-padding pointer text-success"  (click)="updateProject(i.id,i.title,i.description,i.key_words,i.initial_date,i.final_date,true)"></i>
+          <i class="fa fa-lock navbar-right w3-xlarge w3-padding pointer text-danger" (click)="updateProject(i.id,i.title,i.description,i.key_words,i.initial_date,i.final_date,false)" ></i>
+          <i class="fa fa-unlock navbar-right w3-xlarge w3-padding pointer text-success"  (click)="updateProject(i.id,i.title,i.description,i.key_words,i.initial_date,i.final_date,true)"></i>
 
         </h1>
         <div class="card-body">
           <div class="row vdivide">
             <div class="col-sm-4 text-center">
-              <i class="fa fa-check-circle-o fa-3x text-success" *ngIf="i.enabled" ></i>
-              <i class="fa fa-close fa-3x text-danger" *ngIf="!i.enabled" ></i>
+              <i class="fa fa-unlock fa-3x text-success" *ngIf="i.enabled" ></i>
+              <i class="fa fa-lock fa-3x text-danger" *ngIf="!i.enabled" ></i>
               <h6 class="card-subtitle mb-2 text-muted">Initial Date: {{i.initial_date | date}}</h6>
               <h6 class="card-subtitle mb-2 text-muted">Final Date: {{i.final_date | date}}</h6>
             <!--  <h5 class="card-title">Category:{{i.category}}</h5>

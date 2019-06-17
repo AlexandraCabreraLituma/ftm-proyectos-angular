@@ -6,8 +6,9 @@
 
     <div class="card">
       <h1 class="w3-panel card-header bg-primary text-center ">{{i.user.firstname}}{{i.user.lastname}}
-        <i class="fa fa-close navbar-right w3-xlarge w3-padding pointer text-danger" (click)="updateNomination(i.id,i.projectprofile.id,i.user.id,rejected)" ></i>
-        <i class="fa fa-check-circle-o navbar-right w3-xlarge w3-padding pointer text-success"  (click)="updateNomination(i.id,i.projectprofile.id,i.user.id,accepted)"></i>
+       <!-- <i class="fa fa-close navbar-right w3-large w3-padding pointer text-danger" (click)="AcceptedNomination(i.id,i.projectprofile.id,i.user.id,rejected)" >Reject</i>
+        -->
+        <i class="fa fa-check-circle-o navbar-right w3-large w3-padding pointer text-success"  (click)="AcceptedNomination(i.id,i.projectprofile.id,i.user.id,accepted)">Accept</i>
         <br>
       </h1>
       <div class="card-body">
