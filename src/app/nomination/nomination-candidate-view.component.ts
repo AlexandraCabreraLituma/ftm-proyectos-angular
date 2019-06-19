@@ -6,7 +6,7 @@ import {NominationService} from '../shared/service/nomination.service';
 import {HttpService} from '../shared/service/http.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Nomination} from '../shared/model/nomination';
-import {States} from '../shared/model/States';
+import {States} from '../shared/model/states';
 import {ProjectProfile} from '../shared/model/projectprofile';
 import {ProjectProfileView} from '../shared/model/projectsprofileView';
 

@@ -4,6 +4,8 @@ import {User} from '../shared/model/user';
 import {HttpService} from '../shared/service/http.service';
 import {Profile} from '../shared/model/profile';
 import {ProfileService} from '../shared/service/profile.service';
+import {WorkingDay} from '../shared/model/workingDay';
+import {Level} from '../shared/model/level';
 
 @Component({
   selector: 'app-profile',
@@ -23,13 +25,15 @@ export class ProfileComponent implements OnInit {
   userid: string;
   user: User;
   private isregistro = false;
+  private isformulario = true;
 
-  working_days = ['Full time', 'Part time', 'Others'];
+  working_days: WorkingDay[] = [WorkingDay.FULLTIME, WorkingDay.PARTTIME];
+  nivels: Level[] = [Level.JUNIOR, Level.SENIOR, Level.MASTER];
   nivels = ['Junior', 'Senior', 'Master'];
   constructor(private formBuilder: FormBuilder,
               private profileService: ProfileService,
               private http: HttpService) {
-
+    this.isformulario = true;
   }
 
   ngOnInit() {
@@ -46,10 +50,10 @@ export class ProfileComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.registerProfileForm.invalid) {
-      console.log("datos invalidos");
+      console.log('datos invalidos');
       return;
     } else {
-      console.log("datos validos registro project");
+      console.log('datos validos registro project');
       this.add();
 
     }
@@ -66,8 +70,11 @@ export class ProfileComponent implements OnInit {
     this.profileService.saveProfile(this.profile).subscribe(response => {
       console.log('regsitro Correcto');
       this.isregistro = true;
+      this.isformulario = false;
+
     }, error => {
       this.isregistro = false;
+      this.isformulario = true;
       console.log('ERROR:', error);
     });
   }

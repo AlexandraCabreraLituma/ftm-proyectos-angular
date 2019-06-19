@@ -1,5 +1,35 @@
+<form [formGroup]="searchProfileForm" (ngSubmit)="readSearchProfile()">
 
-<div class="container" id="cardsInformacion">
+  <div class="container" >
+    <div div class="col-sm-4 text-center">
+      <label  class="cols-sm-2 control-label">Name:</label>
+      <div class="input-container">
+        <i class="fa fa-user-circle-o icons"></i>
+        <input type="text" formControlName="vname" [(ngModel)] = "name"   placeholder="Name"  class="input-field"  />
+      </div>
+    </div>
+
+    <div class="col-sm-4 text-center">
+      <label  class="cols-sm-2 control-label">Choose Working Day:</label>
+      <div class="input-container">
+        <i class="fa fa-building icons"></i>
+        <select class="input-field"  formControlName="vworking_day"  [(ngModel)] = "working_day"  [ngClass]="{ 'is-invalid': submitted && f.vworking_day.errors }">
+          <ng-container *ngFor="let w_d of working_days" >
+            <option value= {{w_d}}>{{w_d}} </option>
+          </ng-container>
+        </select>
+      </div>
+      <div *ngIf="submitted && f.vworking_day.errors" class="form-horizontal alert alert-danger fade in">
+        <div *ngIf="f.vworking_day.errors.required">Working Day is required</div>
+      </div>
+    </div>
+
+    <div class="col-sm-1 text-center">
+      <button class="btn btn-lg btn-warning"  ><span class="glyphicon glyphicon-search">Search</span></button>
+    </div>
+  </div>
+</form>
+<div class="container" id="cardsInformacion"  *ngIf="isData">
 
   <div *ngFor="let i of data" >
 
