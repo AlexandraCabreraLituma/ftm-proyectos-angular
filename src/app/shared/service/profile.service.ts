@@ -4,6 +4,7 @@ import {Project} from '../model/project';
 import {ApiEndpoint} from '../api-endpoint.model';
 import {HttpService} from './http.service';
 import {Profile} from '../model/profile';
+import {ProfileSearch} from '../model/profileSearch';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +19,9 @@ export class ProfileService {
 
   readProfileByUser(userid: number): Observable<Profile[]> {
     return this.httpService.get(ApiEndpoint.PROFILES +  ApiEndpoint.USERS + '/' + userid);
+  }
+  readProfileSearch(profileSearch: ProfileSearch): Observable<Profile[]> {
+    console.log(profileSearch);
+    return this.httpService.post(ApiEndpoint.PROFILES +  ApiEndpoint.SEARCH , JSON.stringify(profileSearch));
   }
 }
