@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User} from '../shared/model/user';
 import {UserService} from '../shared/service/user.service';
 import {Router} from '@angular/router';
+import {PublicationService} from '../shared/service/publication.service';
 
 @Component({
   selector: 'app-user',
@@ -30,9 +31,8 @@ export class UserComponent implements OnInit {
   user: User;
   private isregistro = false;
   private isformulario = true;
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private publicationService: PublicationService) {
 
-  //  this.homeUrl = data.homeUrl;
   }
 
   comparatePassword() {
@@ -95,24 +95,35 @@ export class UserComponent implements OnInit {
     );
   }
   showOrcid() {
-    console.log(this.email);
-    this.userService.getOrcid(this.orcid).subscribe(
+
+    this.publicationService.readAll(this.orcid).subscribe(
       (respuesta) => {
-        this.msgadvertencia = 'ORCID  ready exists';
-        this.advertenciaOrcid = true;
+        this.userService.getOrcid(this.orcid).subscribe(
+          (respuesta) => {
+            this.msgadvertencia = 'ORCID  ready exists';
+            this.advertenciaOrcid = true;
+          },
+          (error) => {
+            console.log(error);
+            if (error.status === 404) {
+              this.advertenciaOrcid = false;
+            } else if (error.status === 500) {
+              this.msgadvertencia = 'Internal server error';
+              this.advertenciaOrcid = true;
+            }
+
+          }
+        );
       },
       (error) => {
+        this.msgadvertencia = 'ORCID INVALID';
+        this.advertenciaOrcid = true;
         console.log(error);
-        if (error.status === 404) {
-          this.advertenciaOrcid = false;
-        } else if (error.status === 500) {
-          this.msgadvertencia = 'Internal server error';
-          this.advertenciaOrcid = true;
-        }
-
       }
     );
+
   }
+
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -159,6 +170,7 @@ export class UserComponent implements OnInit {
       console.log('ERROR:', error);
     });
   }
+
 
 
 
