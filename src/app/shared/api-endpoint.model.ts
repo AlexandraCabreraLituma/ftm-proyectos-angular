@@ -13,4 +13,5 @@ export class ApiEndpoint {
   public static STATES = '/states';
   public static NOMINATIONS = '/nominations';
   public static SEARCH = '/search';
+  public static ADVANCE = '/advance';
 }

@@ -22,6 +22,7 @@ export class HttpService {
   miStorage = window.sessionStorage;
   private isToken$: Subject<boolean> = new Subject();
 
+
   constructor(private http: HttpClient) {
     this.resetOptions();
   }
@@ -38,6 +39,15 @@ export class HttpService {
     );
   }
   get(endpoint: string): Observable<any> {
+    const headerDict = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json;charset=utf-8',
+
+    }
+
+    const requestOptions = {
+      headers: new HttpHeaders(headerDict),
+    };
     return this.http.get(HttpService.API_END_POINT + endpoint, this.createOptions()).pipe(
       map(response => this.extractData(response)
       ), (error => {
@@ -80,23 +90,19 @@ export class HttpService {
     this.miStorage.removeItem('myToken');
     this.miStorage.removeItem('userId');
     this.miStorage.removeItem('username');
-   // this.isToken$.complete();
+
   }
 
   private extractData(response, user?): any {
     if (this.correctNotification) {
-      /*
-      this.snackBar.open(this.correctNotification, '', {
-        duration: 2000
-      });*/
+
       this.correctNotification = undefined;
     }
    const contentType = response.headers.get('content-type');
     if (contentType) {
       if (contentType.indexOf('application/json') !== -1) {
         if (user != null) {
-          //this.miStorage.setItem('myToken', token);
-          sessionStorage.setItem('username', JSON.parse(user).username);
+           sessionStorage.setItem('username', JSON.parse(user).username);
           sessionStorage.setItem('userId', response.body.userid);
           this.isToken$.next(true);
         }
@@ -104,7 +110,7 @@ export class HttpService {
 
       }
     } else {
-      console.log("aqui");
+
       return response;
     }
   }
@@ -120,15 +126,10 @@ export class HttpService {
       } else {
         error = response.error;
       }
-  /*   this.snackBar.open(error.error + ': ' + error.message, 'Error', {
-        duration: 5000
-      });*/
+
       return throwError(error);
     } catch (e) {
-      /*
-      this.snackBar.open('No hay respuesta del servidor', 'Error', {
-        duration: 5000
-      });*/
+
       return throwError(response.error);
     }
   }
@@ -144,6 +145,7 @@ export class HttpService {
     const options: any = {
       headers: this.headers,
       params: this.params,
+      'Content-Type': 'application/json; charset=utf-8',
       responseType: this.responseType,
       observe: 'response',
 

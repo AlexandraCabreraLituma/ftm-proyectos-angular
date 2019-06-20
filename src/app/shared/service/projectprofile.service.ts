@@ -5,6 +5,7 @@ import {ApiEndpoint} from '../api-endpoint.model';
 import {ProjectProfile} from '../model/projectprofile';
 import {ProjectProfileView} from '../model/projectsprofileView';
 import {ProjectProfileSearch} from '../model/projectProfileSearch';
+import {ProjectProfileSearchAdvance} from '../model/projectProfileSearchAdvance';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,9 @@ export class ProjectprofileService {
   }
   updateProjectProfile(projectProfile: ProjectProfile): Observable<ProjectProfile> {
      return this.httpService.put(ApiEndpoint.PROJECTSPROFILE + '/' + projectProfile.id, projectProfile );
+  }
+  readProyecProfiletSearchAdvance(projectProfileAdvance: ProjectProfileSearchAdvance): Observable<ProjectProfileView[]> {
+    return this.httpService.post(ApiEndpoint.PROJECTSPROFILE + ApiEndpoint.SEARCH + ApiEndpoint.ADVANCE , JSON.stringify(projectProfileAdvance) );
   }
 
 }

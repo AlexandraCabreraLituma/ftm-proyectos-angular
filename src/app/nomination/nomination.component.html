@@ -1,4 +1,56 @@
-<div class="container" id="cardsInformacion">
+<div class="container" >
+    <div div class="col-sm-3 text-center">
+      <label  class="cols-sm-2 control-label">Profile Name:</label>
+      <div class="input-container">
+        <i class="fa fa-user-circle-o icons"></i>
+        <input type="text" [(ngModel)] = "name"   placeholder="Name"  class="input-field"  />
+      </div>
+    </div>
+    <div div class="col-sm-3 text-center">
+      <label  class="cols-sm-2 control-label">Project title:</label>
+      <div class="input-container">
+        <i class="fa fa-university icons"></i>
+        <input type="text" [(ngModel)] = "title"   placeholder="Project title"  class="input-field"  />
+      </div>
+    </div>
+
+    <div class="col-sm-2 text-center">
+      <label  class="cols-sm-2 control-label">Choose Working Day:</label>
+      <div class="input-container">
+        <i class="fa fa-building icons"></i>
+        <select class="input-field"   [(ngModel)] = "working_day" >
+          <ng-container *ngFor="let w_d of working_days" >
+            <option value= {{w_d}}>{{w_d}} </option>
+          </ng-container>
+        </select>
+      </div>
+
+    </div>
+    <div class="col-sm-2 text-center">
+      <label  class="cols-sm-2 control-label">Choose Level:</label>
+      <div class="input-container">
+        <i class="fa fa-building icons"></i>
+        <select class="input-field"   [(ngModel)] = "nivel" >
+          <ng-container *ngFor="let nv of nivels" >
+            <option  value= {{nv}} >{{nv}}  </option>
+          </ng-container>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="col-sm-1 text-center">
+      <button class="btn btn-lg btn-warning" (click)="readSearchProjectProfileAdvance()"  ><span class="glyphicon glyphicon-search">Search</span></button>
+    </div>
+</div>
+
+<div class="container" >
+  <div class="alert alert-inf col-sm-10"  *ngIf="!isData">
+    <strong>Info!</strong> No found Result
+  </div>
+</div>
+
+<div class="container" id="cardsInformacion" *ngIf="isData">
 
   <div *ngFor="let i of data" >
 
