@@ -1,5 +1,6 @@
 export class ProfileSearch {
   user_id: number;
-  workind_day?: string;
+  working_day?: string;
+  nivel?: string;
   name?: string;
 }

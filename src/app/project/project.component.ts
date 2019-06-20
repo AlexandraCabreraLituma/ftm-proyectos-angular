@@ -16,7 +16,6 @@ export class ProjectComponent implements OnInit {
   private submitted = false;
   private title: string;
   private description: string;
-  private category: string;
   private key_words: string;
   private initial_date: Date;
   private final_date: Date;
@@ -25,11 +24,10 @@ export class ProjectComponent implements OnInit {
   user: User;
   private isregistro = false;
 
+  private isformulario = true;
   constructor(private formBuilder: FormBuilder,
               private projectService: ProjectService,
               private http: HttpService) {
-
-
   }
 
 
@@ -82,8 +80,10 @@ export class ProjectComponent implements OnInit {
     this.projectService.saveProject(this.project).subscribe(response => {
       console.log('regsitro Correcto');
       this.isregistro = true;
+      this.isformulario = false;
      }, error => {
       this.isregistro = false;
+      this.isformulario = true;
     });
   }
 

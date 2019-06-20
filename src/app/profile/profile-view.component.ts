@@ -4,6 +4,7 @@ import {Profile} from '../shared/model/profile';
 import {WorkingDay} from '../shared/model/workingDay';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ProfileSearch} from '../shared/model/profileSearch';
+import { Nivel} from '../shared/model/nivel';
 
 @Component({
   selector: 'app-profile-view',
@@ -17,17 +18,20 @@ export class ProfileViewComponent implements OnInit {
   data: Profile[] = [];
   name: string;
   working_day: string;
+  nivel: string;
   searchProfileForm: FormGroup;
   submitted = false;
   user: number;
   isData = false;
-  profileSearch = ProfileSearch;
-  working_days: WorkingDay[] = [WorkingDay.FULLTIME, WorkingDay.PARTTIME, WorkingDay.All];
 
+  profileSearch = ProfileSearch;
+  working_days: WorkingDay[] = [ WorkingDay.All, WorkingDay.FULLTIME, WorkingDay.PARTTIME];
+  nivels: Nivel[] ;
   constructor(private formBuilder: FormBuilder, private profileService: ProfileService) {
     console.log(this.miStorage.getItem('userId'));
     this.userid = this.miStorage.getItem('userId');
-    this.user = Number.parseInt(this.userid, 10);
+  //  this.user = Number.parseInt(this.userid, 10);
+     this.nivels = [Nivel.ALL, Nivel.JUNIOR, Nivel.MASTER, Nivel.SENIOR ];
   }
 
 
@@ -35,7 +39,8 @@ export class ProfileViewComponent implements OnInit {
     this.readProfileUser();
     this.searchProfileForm = this.formBuilder.group({
       vname: [''],
-      vworking_day: ['', [Validators.required]]
+      vworking_day: ['', [Validators.required]],
+      vnivel: ['', [Validators.required]]
     });
     // console.log(this.profiles[0]['name']);
   }
@@ -43,7 +48,7 @@ export class ProfileViewComponent implements OnInit {
     return this.searchProfileForm.controls;
   }
   readProfileUser() {
-    this.profileService.readProfileByUser(this.user).subscribe(
+    this.profileService.readProfileByUser(Number.parseInt(this.userid, 10)).subscribe(
       projects => {
         this.isData = true;
         this.data = projects['profiles'];
@@ -55,13 +60,14 @@ export class ProfileViewComponent implements OnInit {
   readSearchProfile() {
     this.submitted = true;
     if (this.searchProfileForm.invalid) {
-      console.log("datos invalidos");
+      console.log('datos invalidos');
       return;
     } else {
       this.profileSearch = {
-        name: this.name == null ? '' : this.name,
+        name: this.name === '' ? '' : this.name,
         working_day: this.working_day === WorkingDay.All ? '' : this.working_day,
-        user_id: this.user
+        nivel: this.nivel === Nivel.ALL ? '' : this.nivel,
+        user_id:  Number.parseInt(this.userid, 10)
       };
 
       this.profileService.readProfileSearch(this.profileSearch).subscribe(response => {

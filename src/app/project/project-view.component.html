@@ -5,8 +5,12 @@
   </div>
 </div>
 <br>
-
-<div class="container" id="cardsInformacion">
+<div class="container" >
+  <div class="alert alert-inf col-sm-10"  *ngIf="!isData">
+    <strong>Info!</strong> No found Result
+  </div>
+</div>
+<div class="container" id="cardsInformacion" *ngIf="isData">
 
   <div *ngFor="let i of data" >
 

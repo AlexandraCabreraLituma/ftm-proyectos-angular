@@ -11,7 +11,7 @@ export class ProjectViewComponent implements OnInit {
   userid: string;
   miStorage = window.sessionStorage;
   data: Project[] = [];
-
+  isData = false;
  project: Project = {id: null, title: null, description: null, key_words: null, initial_date: null, final_date: null, enabled: null, user_id: null };
   private title: string;
   private description: string;
@@ -30,13 +30,21 @@ export class ProjectViewComponent implements OnInit {
   }
   readProjectUser() {
     this.projectService.readProyectByUser(Number.parseInt(this.userid, 10)).subscribe(
-      projects => this.data = projects['projects']
-    );
+      projects => {
+      this.isData = true;
+      this.data = projects['projects'];
+    }, error => {
+      this.isData = false;
+    });
   }
   readProyectUserEnabled() {
     this.projectService.readProyectByUserEnabled(Number.parseInt(this.userid, 10)).subscribe(
-      projects => this.data = projects['projects']
-    );
+      projects => {
+        this.isData = true;
+        this.data = projects['projects'];
+      }, error => {
+        this.isData = false;
+      });
   }
   updateProject(projectID, title, description, key_works, initial_date, final_date, state) {
     this.project.id = projectID;
