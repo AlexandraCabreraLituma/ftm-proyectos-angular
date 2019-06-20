@@ -5,7 +5,7 @@ import {HttpService} from '../shared/service/http.service';
 import {Profile} from '../shared/model/profile';
 import {ProfileService} from '../shared/service/profile.service';
 import {WorkingDay} from '../shared/model/workingDay';
-import {Level} from '../shared/model/level';
+import {Nivel} from '../shared/model/nivel';
 
 @Component({
   selector: 'app-profile',
@@ -28,8 +28,7 @@ export class ProfileComponent implements OnInit {
   private isformulario = true;
 
   working_days: WorkingDay[] = [WorkingDay.FULLTIME, WorkingDay.PARTTIME];
-  nivels: Level[] = [Level.JUNIOR, Level.SENIOR, Level.MASTER];
-  nivels = ['Junior', 'Senior', 'Master'];
+  nivels: Nivel[] = [Nivel.JUNIOR, Nivel.SENIOR, Nivel.MASTER];
   constructor(private formBuilder: FormBuilder,
               private profileService: ProfileService,
               private http: HttpService) {
