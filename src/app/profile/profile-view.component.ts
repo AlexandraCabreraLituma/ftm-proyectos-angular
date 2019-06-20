@@ -3,8 +3,8 @@ import {ProfileService} from '../shared/service/profile.service';
 import {Profile} from '../shared/model/profile';
 import {WorkingDay} from '../shared/model/workingDay';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ProfileSearch} from '../shared/model/profileSearch';
 import { Nivel} from '../shared/model/nivel';
+import {ProfileSearch} from '../shared/model/profileSearch';
 
 @Component({
   selector: 'app-profile-view',
@@ -24,7 +24,7 @@ export class ProfileViewComponent implements OnInit {
   user: number;
   isData = false;
 
-  profileSearch = ProfileSearch;
+  profileSearch: ProfileSearch;
   working_days: WorkingDay[] = [ WorkingDay.All, WorkingDay.FULLTIME, WorkingDay.PARTTIME];
   nivels: Nivel[] ;
   constructor(private formBuilder: FormBuilder, private profileService: ProfileService) {
@@ -32,6 +32,7 @@ export class ProfileViewComponent implements OnInit {
     this.userid = this.miStorage.getItem('userId');
   //  this.user = Number.parseInt(this.userid, 10);
      this.nivels = [Nivel.ALL, Nivel.JUNIOR, Nivel.MASTER, Nivel.SENIOR ];
+     this.name = '';
   }
 
 
@@ -63,11 +64,12 @@ export class ProfileViewComponent implements OnInit {
       console.log('datos invalidos');
       return;
     } else {
+
       this.profileSearch = {
-        name: this.name === '' ? '' : this.name,
+        name: this.name,
         working_day: this.working_day === WorkingDay.All ? '' : this.working_day,
         nivel: this.nivel === Nivel.ALL ? '' : this.nivel,
-        user_id:  Number.parseInt(this.userid, 10)
+        user_id: Number.parseInt(this.userid, 10)
       };
 
       this.profileService.readProfileSearch(this.profileSearch).subscribe(response => {

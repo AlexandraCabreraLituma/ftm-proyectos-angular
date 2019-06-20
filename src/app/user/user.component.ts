@@ -152,9 +152,10 @@ export class UserComponent implements OnInit {
     this.userService.saveUser(this.user).subscribe(response => {
       console.log('regsitro Correcto');
       this.isregistro = true;
-
+      this.isformulario = false;
     }, error => {
       this.isregistro = false;
+      this.isformulario = true;
       console.log('ERROR:', error);
     });
   }

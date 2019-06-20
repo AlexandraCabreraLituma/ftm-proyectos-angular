@@ -15,11 +15,11 @@ export class ResearcherComponent implements OnInit {
 
   reservaList: Publication[] = [];
   userID = '';
-
+  isData = false;
   data: UserMinimo = {username: '', email: '', orcid: '', firstname: '', lastname: '', address: '' , phone : null};
 
   constructor(private publicationService: PublicationService, private  userService: UserService, private routerActive: ActivatedRoute) {
-    // console.log(this.username);
+
     this.reservaList = [];
 
   }
@@ -32,15 +32,19 @@ export class ResearcherComponent implements OnInit {
   readRearchers(user: number) {
     this.userService.getUserId(user).subscribe(
       (res: User) => {
-        //  console.log(res);
         this.data = res['user'];
         console.log(this.data.orcid);
         this.publicationService.readAll(this.data.orcid).subscribe(
           (respuesta) => {
             this.reservaList = respuesta;
-            //  console.log(respuesta);
-          },
+            if (this.reservaList.length > 0 ) {
+               this.isData = true;
+             } else  {
+               this.isData = false;
+             }
+         },
           (error) => {
+            this.isData = false;
             console.log(error);
           }
         );

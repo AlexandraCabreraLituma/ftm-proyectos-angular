@@ -1,4 +1,4 @@
-<form id="registro" [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
+<form id="registro" [formGroup]="registerForm" (ngSubmit)="onSubmit()" *ngIf="isformulario">
   <h2>Register User</h2>
 
   <div class="form-group">
