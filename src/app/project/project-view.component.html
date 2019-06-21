@@ -1,16 +1,64 @@
-<div class="container">
-  <div class="btn-group container" role="group">
+<div class="container"  align="right">
+  <div class="btn-group text-right" role="group">
     <button class="btn btn-lg btn-secondary" (click)="readProjectUser()"><span class="glyphicon glyphicon-search"></span> All</button>
   <button class="btn btn-lg btn-secondary" (click)="readProyectUserEnabled()"><span class="fa fa-unlock text-success"></span> Enabled</button>
   </div>
 </div>
 <br>
-<div class="container" >
-  <div class="alert alert-inf col-sm-10"  *ngIf="!isData">
-    <strong>Info!</strong> No found Result
+<div class="container">
+  <div class="col-sm-3 text-center" >
+    <div >
+      <label  class="cols-sm-2 control-label">Title:</label>
+      <div class="input-container">
+        <i class="fa fa-user-circle-o icons"></i>
+        <input type="text" [(ngModel)] = "title"   placeholder="Name"  class="input-field"  />
+      </div>
+    </div>
+    <div>
+      <label class="cols-sm-2 control-label">Key Word:</label>
+      <div class="input-container">
+        <i class="fa fa-user-circle-o icons"></i>
+        <input type="text" [(ngModel)] = "key_words"   placeholder="Key Words"  class="input-field"  />
+      </div>
+    </div>
+
+    <div >
+      <label  class="cols-sm-2 control-label">Initial Date</label>
+      <div class="input-container">
+        <i class="fa fa-calendar icons"></i>
+        <input class="input-field" type="date"  [(ngModel)] = "initial_date" >
+      </div>
+    </div>
+    <div >
+      <label  class="cols-sm-2 control-label">Final Date</label>
+      <div class="input-container">
+        <i class="fa fa-calendar icons"></i>
+        <input class="input-field" type="date" [(ngModel)] = "final_date" (focus)="closeFinalDate()" (blur)="comparate()" >
+      </div>
+      <div *ngIf="advertenciaFinalDate" id="dialogAdvertenciaFinalDate"class="form-horizontal alert alert-danger fade in" >
+        <strong >Warning: Final Date is wrong</strong>
+      </div>
+
+    </div>
+    <div >
+      <label class="checkbox text-left">Open
+        <input type="checkbox" [(ngModel)]="state" >
+        <span class="check"></span>
+      </label>
+    </div>
+    <div>
+      <button class="btn btn-lg btn-warning" (click)="readSearchProjectAdvance()" ><span class="glyphicon glyphicon-search">Search</span></button>
+
+    </div>
+
   </div>
+
+<div class="col-sm-8 text-left"  *ngIf="!isData">
+   <div class="alert alert-inf col-sm-10" >
+     <strong>Info!</strong> No found Result
+   </div>
 </div>
-<div class="container" id="cardsInformacion" *ngIf="isData">
+<div class="col-sm-9 text-left "id="cardsInformacion" *ngIf="isData">
 
   <div *ngFor="let i of data" >
 
@@ -49,3 +97,6 @@
   </div>
 
 </div>
+</div>
+<br>
+<br>
