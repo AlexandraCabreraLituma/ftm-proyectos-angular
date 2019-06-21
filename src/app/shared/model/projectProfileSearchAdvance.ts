@@ -4,4 +4,6 @@ export class ProjectProfileSearchAdvance {
   working_day?: string;
   nivel?: string;
   title?: string;
+  initial_date?: string;
+  final_date?: string;
 }

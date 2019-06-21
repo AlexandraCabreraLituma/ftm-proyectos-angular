@@ -18,15 +18,20 @@ export class NominationComponent implements OnInit {
   working_day: string;
   nivel: string;
   title: string;
+  private initial_date: string;
+  private final_date: string;
   working_days: WorkingDay[] = [ WorkingDay.All, WorkingDay.FULLTIME, WorkingDay.PARTTIME];
   nivels: Nivel[] = [Nivel.ALL, Nivel.JUNIOR, Nivel.MASTER, Nivel.SENIOR ];
   data: ProjectProfileView[] = [];
+  private advertenciaFinalDate = false;
   constructor( private router: Router, private projectprofileService: ProjectprofileService) {
     this.name = '';
     this.working_day = '';
     this.name = '';
     this.title = '';
     this.nivel = '';
+    this.initial_date = '';
+    this.final_date = '';
 
   }
 
@@ -54,7 +59,9 @@ export class NominationComponent implements OnInit {
         working_day: this.working_day === WorkingDay.All ? '' : this.working_day,
         nivel: this.nivel === Nivel.ALL ? '' : this.nivel,
         name: this.name,
-        title: this.title
+        title: this.title,
+        initial_date: this.initial_date,
+        final_date : this.final_date,
       };
 
       this.projectprofileService.readProyecProfiletSearchAdvance(this.projectProfileSearchAdvance).subscribe(response => {
@@ -64,6 +71,13 @@ export class NominationComponent implements OnInit {
         this.isData = false;
       });
   }
-
+  comparate() {
+    if (this.initial_date > this.final_date) {
+      this.advertenciaFinalDate = true;
+    }
+  }
+  closeFinalDate() {
+    this.advertenciaFinalDate = false;
+  }
 
 }
