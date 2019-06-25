@@ -1,13 +1,8 @@
-<div class="container" >
 
-</div>
 <div class="container" id="cardsInformacion" *ngIf="isData">
   <div *ngFor="let i of datos" >
-
     <div class="card">
       <h1 class="w3-panel card-header bg-primary text-center ">{{i.user.firstname}}{{i.user.lastname}}
-       <!-- <i class="fa fa-close navbar-right w3-large w3-padding pointer text-danger" (click)="AcceptedNomination(i.id,i.projectprofile.id,i.user.id,rejected)" >Reject</i>
-        -->
         <i class="fa fa-check-circle-o navbar-right w3-large w3-padding pointer text-success"  (click)="AcceptedNomination(i.id,i.projectprofile.id,i.user.id,accepted)">Accept</i>
         <br>
       </h1>
@@ -22,7 +17,7 @@
             <h5 class="card-title">Address:{{i.user.address}}</h5>
             <h5 class="card-title">Email:{{i.user.email}}</h5>
             <h6 class="card-title">Phone:{{i.user.phone}}</h6>
-            <button class="btn btn-link" (click)="openUser(i.user.id)">Profile ORCID</button>
+            <button class="btn btn-link" (click)="openUser(i.user.id)">Researcher Biography</button>
           </div>
         </div>
 
