@@ -44,7 +44,7 @@ export class UserNominationViewComponent implements OnInit {
       this.isModalDeletePostulated = true;
    } else {
       this.titleModal = 'Error';
-      this.msgModal = 'State is not postulated';
+      this.msgModal = 'You can not delete the nomination';
       this.isModalDeletePostulated = false;
     }
     this.isModalDelete = true;

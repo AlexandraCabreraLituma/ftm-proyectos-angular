@@ -11,9 +11,9 @@
         <li class="dropdown" *ngIf="isSeesion">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a routerLink="publication">Profile</a></li>
+            <li><a routerLink="publication">Biography</a></li>
             <li role="separator" class="divider"></li>
-            <li><a routerLink="user-nomination-view"  >MyNomination</a></li>
+            <li><a routerLink="user-nomination-view"  >My Nominations</a></li>
           </ul>
         </li>
 
@@ -22,6 +22,7 @@
           <ul class="dropdown-menu">
             <li><a routerLink="project">Register</a></li>
             <li><a routerLink="project-view">Show</a></li>
+            <li><a routerLink="project-profile">Add Profile </a></li>
           </ul>
         </li>
 
@@ -30,18 +31,9 @@
           <ul class="dropdown-menu">
             <li><a routerLink="profile">Register</a></li>
             <li><a routerLink="profile-view">Show</a></li>
-            <li><a href="#">Edit</a></li>
           </ul>
         </li>
-        <li class="dropdown" *ngIf="isSeesion">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Nomination <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a routerLink="project-profile">Register</a></li>
-            <li><a routerLink="project-profile-view">Show</a></li>
-
-          </ul>
-        </li>
-
+        <li><a routerLink="project-profile-view" *ngIf="isSeesion">Postulations</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
