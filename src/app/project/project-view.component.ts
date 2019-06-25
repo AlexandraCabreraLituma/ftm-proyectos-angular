@@ -17,14 +17,14 @@ export class ProjectViewComponent implements OnInit {
   projectSearch: ProjectSearch
   isData = false;
   project: Project = {id: null, title: null, description: null, key_words: null, initial_date: null, final_date: null, enabled: null, user_id: null };
-  private title: string;
-  private description: string;
-  private key_words: string;
-  state: boolean;
   title: string;
-   initial_date: string;
-   final_date: string;
-   advertenciaFinalDate = false;
+  description: string;
+  key_words: string;
+  state: boolean;
+  initial_date: string;
+  final_date: string;
+
+  advertenciaFinalDate = false;
   constructor(private projectService: ProjectService) {
     console.log(this.miStorage.getItem('userId'));
     this.userid = this.miStorage.getItem('userId');
@@ -87,7 +87,7 @@ export class ProjectViewComponent implements OnInit {
 
 
       this.projectSearch = {
-        state: this.state,
+        enabled: this.state,
         user_id: Number.parseInt(this.userid, 10),
         title: this.title,
         key_words: this.key_words,
