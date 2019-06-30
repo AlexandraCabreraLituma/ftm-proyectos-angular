@@ -139,8 +139,6 @@ export class HttpService {
     this.params = new HttpParams();
     this.responseType = 'json';
   }
-
-
   private createOptions(): any {
     const options: any = {
       headers: this.headers,

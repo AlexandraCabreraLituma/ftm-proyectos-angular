@@ -66,6 +66,7 @@ export class NominationComponent implements OnInit {
 
       this.projectprofileService.readProyecProfiletSearchAdvance(this.projectProfileSearchAdvance).subscribe(response => {
         this.data = response['projectsprofiles'];
+        console.log(response);
         this.isData = true;
       }, error => {
         this.isData = false;

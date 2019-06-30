@@ -1,27 +1,26 @@
-# TFMFront
+### Trabajo Fin de Máster 
+##  Aplicación web para la gestión de proyectos de investigación 
+> [Máster en Ingeniería Web por la Universidad Politécnica de Madrid (miw-upm)](http://miw.etsisi.upm.es)  
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.6.
+### Resumen 
+El objetivo del proyecto es desarrollar una aplicación web para que los investigadores publiquen sus propuestas de investigación y los requisitos que necesitan los investigadores para trabajan en ellos.
+La idea nació a la falta de un portal web orientado hacia los investigadores donde ellos puedan encontrar un proyecto de acuerdo con sus intereses.
+Por lo tanto, la aplicación permitirá a los investigadores gestionar sus trabajos, los cuales tendrán información general del proyecto y los requisitos necesarios para cada postulante. Para lo cual contaran con un perfil personal donde se presente sus datos personales, académicos y publicaciones realizadas.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Autor
+> [AlexandraCabreraLituma](https://github.com/AlexandraCabreraLituma)  
 
-## Code scaffolding
+### Tutores
+>Francisco Javier Gil Rubio
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+>Juan Garbajosa Sopeña
 
-## Build
+## Back-End
+> [TFM-PROYECTOS-PHP](https://github.com/AlexandraCabreraLituma/ftm-proyectos-php)  
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Front-End
+> [TFM-PROYECTOS-ANGULAR](https://github.com/AlexandraCabreraLituma/ftm-proyectos-angular)  
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Tecnologías necesarias
+`Typescript` `Angular` `PHP` `PHPUnit` `Symfony` `HTML` `CSS`
