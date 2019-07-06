@@ -19,15 +19,18 @@ export class PublicationService {
   }
 
   readAll(corid): Observable<any> {
+    this.publicationList = [] ;
       return this.httpService.get(corid, ApiEndpoint.WORKS).pipe(
         map( x => {
-          if (this.publicationList.length <= 0 && x.group.length > 0 ) {
-           // console.log('clea' + x.group.length);
+        //  if (this.publicationList.length <= 0 &&
+          if (x.group.length > 0 ) {
+            console.log('clea' + x.group.length);
             this.clean(x.group);
             return this.publicationList ;
-          } else {
-            return this.publicationList = [] ;
-          }
+            }
+          //} else {
+          //  return this.publicationList = [] ;
+         // }
         })
       );
   }

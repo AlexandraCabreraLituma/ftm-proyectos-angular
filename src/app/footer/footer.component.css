@@ -4,5 +4,6 @@ footer{
   bottom: 0;
   width: 100%;
   color: white;
+  position: fixed;
   text-align: center;
 }

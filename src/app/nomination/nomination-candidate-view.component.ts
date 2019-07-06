@@ -48,6 +48,7 @@ export class NominationCandidateViewComponent implements OnInit {
       this.nomination.state = state;
       console.log(this.nomination);
       this.nominationService.updateNomination(this.nomination).subscribe();
+      this.readNominationBYProjectProfileID(Number.parseInt(this.project_profile_id, 10));
 
     } else if (this.accepted === state) {
       for (const i of this.datos) {

@@ -26,16 +26,18 @@ export class ResearcherComponent implements OnInit {
 
   ngOnInit() {
     this.userID = this.routerActive.snapshot.paramMap.get('id');
-    this.readRearchers(Number.parseInt(this.userID, 10));
+    this.readRearchers();
 
   }
-  readRearchers(user: number) {
-    this.userService.getUserId(user).subscribe(
+  readRearchers() {
+    console.log(Number.parseInt(this.userID, 10));
+    this.userService.getUserId(Number.parseInt(this.userID, 10)).subscribe(
       (res: User) => {
         this.data = res['user'];
         console.log(this.data.orcid);
         this.publicationService.readAll(this.data.orcid).subscribe(
           (respuesta) => {
+            console.log(respuesta);
             this.reservaList = respuesta;
             if (this.reservaList.length > 0 ) {
                this.isData = true;
