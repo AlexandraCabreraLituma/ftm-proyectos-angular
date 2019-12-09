@@ -23,6 +23,7 @@
     "angular2-toaster": "^7.0.0",
     "core-js": "^2.5.4",
     "igniteui-angular": "latest",
+    "lodash.mergewith": "^4.6.2",
     "ngx-toastr": "^10.0.2",
     "rxjs": "~6.3.3",
     "serialize-javascript": "^2.1.2",
